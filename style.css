@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 .nav_bar {
   display: flex;
   justify-content: flex-end;
@@ -11,6 +14,10 @@ body {
   background-color: #f6f3f3;
   color: rgb(83, 83, 83);
   border-bottom: 1px solid rgba(83, 83, 83, 0.284);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 .nav_bar ul {
   display: flex;
@@ -34,8 +41,9 @@ i {
   border-radius: 20%;
 }
 
-.hero-content{
+.hero-content {
   margin-left: 30px;
+  margin-top: 50px;
 }
 
 .hero-content h3 {
@@ -54,5 +62,27 @@ i {
   max-width: 450px;
   line-height: 1.6;
   margin-top: 16px;
+}
+.about-content {
+  display: flex;
+  gap: 320px;
+}
+#about-description {
+  max-width: 450px;
+  line-height: 1.6;
+  margin-top: 16px;
+}
+.about {
+  margin-left: 30px;
+  padding-top: 2000px;
+  margin-top: 100px;
+}
+.education {
   border: 1px solid rgb(83, 83, 83);
+  max-width: 320px;
+  padding: 10px;
+  border-radius: 2%;
+}
+.education p {
+  color: rgb(83, 83, 83);
 }
