@@ -82,7 +82,106 @@ i {
   max-width: 320px;
   padding: 10px;
   border-radius: 2%;
+  background-color: white;
 }
 .education p {
   color: rgb(83, 83, 83);
+}
+
+.skills {
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-top: 210px;
+  margin-top: 100px;
+}
+.skills-content {
+  display: flex;
+  gap: 50px;
+  align-items: stretch;
+}
+.card {
+  flex: 1;
+  min-width: 180px;
+  border: 1px solid rgb(83, 83, 83);
+  padding: 18px;
+  border-radius: 2%;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  color: rgb(61, 60, 60);
+}
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.card ul li {
+  display: inline-flex;
+  align-items: center;
+}
+.contact {
+  padding-top: 210px;
+  margin-top: 100px;
+  background: #f5f5f5;
+  text-align: center;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+.contact h1 {
+  letter-spacing: 10px;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.line {
+  width: 60px;
+  height: 2px;
+  background: black;
+  margin: 0 auto 30px;
+}
+.email {
+  display: inline-block;
+  font-size: 18px;
+  color: black;
+  text-decoration: none;
+  margin-bottom: 30px;
+}
+.email:hover {
+  color: rgb(83, 83, 83);
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: black;
+  color: white;
+  border-radius: 50%;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  background: #555;
+  transform: scale(1.1);
+}
+.ic {
+  padding: 10px;
+}
+.horizontal {
+  height: 2px;
+  background: rgb(162, 160, 160);
+  margin: 100px 30px 30px;
+}
+
+.dark-mode {
+  background-color: rgb(15, 3, 42);
+  color: rgb(239, 238, 237);
 }
