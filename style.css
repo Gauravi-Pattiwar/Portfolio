@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background-color: rgb(239, 238, 237);
   margin: 0;
@@ -248,6 +251,9 @@ i {
     box-shadow: 0 2px 10px rgb(196, 6, 177);
     color: beige;
   }
+  .skill_img {
+    background: beige;
+  }
 }
 
 @media (max-width: 900px) {
@@ -280,7 +286,7 @@ i {
   #profile-pic {
     width: 90%;
     max-width: 320px;
-    height: auto;
+    height: 320px;
   }
 
   .education,
