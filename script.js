@@ -1,6 +1,7 @@
 const homeBtn = document.getElementById("home-btn");
 const aboutBtn = document.getElementById("about-btn");
 const skillsBtn = document.getElementById("skills-btn");
+const projectsBtn = document.getElementById("projects-btn");
 const contactBtn = document.getElementById("contact-btn");
 const darkTheme = document.getElementById("dark-mode");
 
@@ -25,6 +26,12 @@ skillsBtn.addEventListener("click", () => {
 contactBtn.addEventListener("click", () => {
   document
     .getElementsByClassName("contact")[0]
+    .scrollIntoView({ behavior: "smooth" });
+});
+
+projectsBtn.addEventListener("click", () => {
+  document
+    .getElementsByClassName("projects")[0]
     .scrollIntoView({ behavior: "smooth" });
 });
 
