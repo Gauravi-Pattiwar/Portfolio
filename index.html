@@ -3,219 +3,383 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Gauravi Pattiwar | Portfolio</title>
+    <meta name="description" content="Gauravi Pattiwar — Computer Engineering student at PICT, passionate about web development and building real-world projects." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   </head>
   <body>
-    <div class="content">
-      <section class="hero">
-        <div class="nav_bar">
-          <ul>
-            <li id="home-btn">HOME</li>
-            <li id="about-btn">ABOUT</li>
-            <li id="skills-btn">SKILLS</li>
-            <li id="projects-btn">PROJECTS</li>
-            <li id="contact-btn">CONTACT</li>
-            <li id="dark-mode"><i class="fa-solid fa-moon"></i></li>
-          </ul>
-        </div>
-        <div class="hero-content">
-          <br />
-          <h3 id="sideheading">Hello! I'm</h3>
-          <h1 id="mainheading">Gauravi Pattiwar</h1>
-          <h2 id="tags">Enthusiastic Learner</h2>
-          <br />
-          <div class="intro">
-            <p id="description">
-              I am an enthusiastic learner with a strong passion for technology
-              and development. I enjoy exploring new technologies and
-              continuously improving my skills by applying what I learn to
-              real-world scenarios. I am always eager to take on new challenges
-              and grow as a developer.
-            </p>
-            <img src="profile.jpg" alt="Profile Picture" id="profile-pic" />
-          </div>
-        </div>
-      </section>
-      <div class="horizontal"></div>
-      <section class="about" id="about-section">
-        <h1>About Me</h1>
-        <div class="about-content">
-          <p id="about-description">
-            I am pursuing a Bachelor of Engineering degree in Computer
-            Engineering at PICT with a strong interest in technology and
-            problem-solving. Currently, I am learning Data Structures and
-            Algorithms along with Web Development to build a solid foundation in
-            both programming and software development. I enjoy exploring new
-            concepts, building small projects, and continuously improving my
-            skills. My goal is to grow as a developer and contribute to
-            impactful real-world projects.
-          </p>
-          <div class="education">
-            <h3>Education</h3>
-            <p>
-              Pursuing B.E. in Computer Engineering at PICT<br /><br />Secured
-              86% in Higher School(12th Grade) <br /><br />
-              Secured 94% in Secondary School(10th Grade)
-            </p>
-          </div>
-        </div>
-      </section>
-      <div class="horizontal"></div>
-      <section class="skills" id="skill-section">
-        <h1>Skills</h1>
-        <div class="skills-content">
-          <div class="card skill-card-1">
-            <h2>Coding Languages</h2>
-            <ul>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/python"
-                  height="45"
-                  alt="Python"
-                  class="skill_img"
-                />
-              </li>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/cplusplus"
-                  height="45"
-                  alt="C++"
-                  class="skill_img"
-                />
-              </li>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/mysql"
-                  height="45"
-                  alt="MySQL"
-                  class="skill_img"
-                />
-              </li>
-            </ul>
-          </div>
-          <div class="card skill-card-2">
-            <h2>Web Development</h2>
-            <ul>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/html5"
-                  height="45"
-                  alt="HTML"
-                  class="skill_img"
-                />
-              </li>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/css"
-                  height="45"
-                  alt="CSS"
-                  class="skill_img"
-                />
-              </li>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/javascript"
-                  height="45"
-                  alt="JavaScript"
-                  class="skill_img"
-                />
-              </li>
-            </ul>
-          </div>
-          <div class="card skill-card-3">
-            <h2>Tools</h2>
-            <ul>
-              <li>
-                <img
-                  src="https://cdn.simpleicons.org/github"
-                  height="45"
-                  alt="GitHub"
-                  class="skill_img"
-                />
-              </li>
-              <li>
-                <img
-                  src="https://img.icons8.com/color/48/visual-studio-code-2019.png"
-                  alt="VS Code"
-                  class="skill_img"
-                />
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <div class="horizontal"></div>
-      <section class="projects" id="projects-section">
-        <h1>Mini Projects</h1>
-        <div class="projects-content">
-          <div class="project-card" id="calculator">
-            <h2>Calculator</h2>
-            <p>
-              A simple calculator web application built using HTML, CSS, and
-              JavaScript. It performs basic arithmetic operations such as
-              addition, subtraction,
-            </p>
-            <img src="Calculator.png" alt="Calculator" class="project-img" />
-            <a
-              href="https://gauravi-pattiwar.github.io/Calculator/"
-              target="_blank"
-              class="view-project"
-              >View Project</a
-            >
-          </div>
-          <div class="project-card" id="tic-tac-toe">
-            <h2>Tic Tac Toe</h2>
-            <p>
-              A classic Tic Tac Toe game implemented using HTML, CSS, and
-              JavaScript. Players can take turns to place their marks on a 3x3
-              grid, and the game
-            </p>
-            <img src="Tic Tac Toe.png" alt="Tic Tac Toe" class="project-img" />
-            <a
-              href=" https://gauravi-pattiwar.github.io/Tic-Tac-Toe/"
-              target="_blank"
-              class="view-project"
-              >View Project</a
-            >
-          </div>
-        </div>
-      </section>
-      <div class="horizontal"></div>
+    <!-- Custom cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
-      <section class="contact" id="contact-section">
-        <h1>GET IN TOUCH</h1>
-        <div class="line"></div>
-        <a href="mailto:gauravipattiwar04@gmail.com" class="email"
-          >gauravipattiwar04@gmail.com</a
-        >
-        <div class="icons">
-          <a href="https://github.com/Gauravi-Pattiwar" target="_blank">
-            <img
-              src="https://cdn.simpleicons.org/github"
-              height="60"
-              alt="GitHub"
-              class="ic"
-            />
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Particle background canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="nav_bar" id="navbar">
+      <div class="nav-logo">GP<span class="logo-dot">.</span></div>
+      <ul class="nav-links">
+        <li id="home-btn">Home</li>
+        <li id="about-btn">About</li>
+        <li id="skills-btn">Skills</li>
+        <li id="projects-btn">Projects</li>
+        <li id="contact-btn">Contact</li>
+      </ul>
+      <div class="nav-right">
+        <button id="dark-mode" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="hero-section">
+      <!-- Gradient mesh blobs -->
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge reveal-hero">
+          <span class="badge-dot"></span>
+          Available for opportunities
+        </div>
+
+        <p class="hero-greeting reveal-hero delay-1">Hello, I'm</p>
+        <h1 class="hero-name reveal-hero delay-2">
+          Gauravi<br /><span class="gradient-text">Pattiwar</span>
+        </h1>
+
+        <div class="hero-role reveal-hero delay-3">
+          <span class="role-prefix">// </span>
+          <span id="typed-text"></span>
+          <span class="typing-cursor">|</span>
+        </div>
+
+        <p class="hero-desc reveal-hero delay-4">
+          Computer Engineering student at <strong>PICT</strong> · Building delightful
+          web experiences with modern technologies.
+        </p>
+
+        <div class="hero-actions reveal-hero delay-5">
+          <a href="#projects-section" class="btn-primary" id="view-work-btn">
+            <span>View My Work</span>
+            <i class="fa-solid fa-arrow-right"></i>
           </a>
-          <a
-            href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-            target="_blank"
-          >
-            <img
-              src="https://img.icons8.com/?size=100&id=8808&format=png&color=000000"
-              height="60"
-              alt="LinkedIn"
-              class="ic"
-            />
+          <a href="mailto:gauravipattiwar04@gmail.com" class="btn-ghost">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Get In Touch</span>
           </a>
         </div>
-      </section>
+
+        <div class="hero-socials reveal-hero delay-6">
+          <a href="https://github.com/Gauravi-Pattiwar" target="_blank" class="social-chip" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab" target="_blank" class="social-chip" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:gauravipattiwar04@gmail.com" class="social-chip" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal-hero delay-3">
+        <div class="profile-wrapper">
+          <div class="profile-ring"></div>
+          <div class="profile-ring ring-2"></div>
+          <img src="profile.jpg" alt="Gauravi Pattiwar" id="profile-pic" />
+          <div class="profile-tag tag-1">
+            <i class="fa-solid fa-code"></i> Web Dev
+          </div>
+          <div class="profile-tag tag-2">
+            <i class="fa-solid fa-database"></i> DSA
+          </div>
+          <div class="profile-tag tag-3">
+            <i class="fa-solid fa-star"></i> 94% in 10th
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════ STATS STRIP ═══════════════ -->
+    <div class="stats-strip">
+      <div class="stat-item reveal reveal-up">
+        <span class="stat-num" data-target="94">0</span><span class="stat-suffix">%</span>
+        <p>10th Score</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-up delay-1">
+        <span class="stat-num" data-target="86">0</span><span class="stat-suffix">%</span>
+        <p>12th Score</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-up delay-2">
+        <span class="stat-num" data-target="4">0</span><span class="stat-suffix">+</span>
+        <p>Projects Built</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-up delay-3">
+        <span class="stat-num" data-target="5">0</span><span class="stat-suffix">+</span>
+        <p>Technologies</p>
+      </div>
     </div>
+
+    <!-- ═══════════════ ABOUT ═══════════════ -->
+    <section class="about" id="about-section">
+      <div class="section-label reveal reveal-up">01 — About Me</div>
+      <h2 class="section-title reveal reveal-up">Who I Am</h2>
+
+      <div class="about-grid">
+        <div class="about-text reveal reveal-left">
+          <p>
+            I'm a <strong>Computer Engineering student at PICT</strong>, passionate about
+            building things for the web. I love turning ideas into elegant, functional
+            experiences.
+          </p>
+          <p>
+            Currently diving deep into <strong>Data Structures & Algorithms</strong> and
+            <strong>Web Development</strong> — always looking for opportunities to apply
+            knowledge to real-world problems.
+          </p>
+          <p>
+            When I'm not coding, I'm exploring new technologies, reading tech blogs, or
+            working on mini side projects to sharpen my skills.
+          </p>
+
+          <div class="about-tags">
+            <span class="tag"><i class="fa-solid fa-graduation-cap"></i> PICT, Pune</span>
+            <span class="tag"><i class="fa-solid fa-laptop-code"></i> B.E. Computer Engineering</span>
+            <span class="tag"><i class="fa-solid fa-location-dot"></i> Pune, India</span>
+          </div>
+        </div>
+
+        <div class="about-right reveal reveal-right">
+          <div class="edu-card">
+            <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
+            <div class="edu-info">
+              <h4>Secondary School (10th)</h4>
+              <p>Secured <strong>94%</strong></p>
+            </div>
+            <div class="edu-badge">2021</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="edu-info">
+              <h4>Higher Secondary (12th)</h4>
+              <p>Secured <strong>86%</strong></p>
+            </div>
+            <div class="edu-badge">2023</div>
+          </div>
+          <div class="edu-card edu-card--active">
+            <div class="edu-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="edu-info">
+              <h4>B.E. Computer Engineering</h4>
+              <p>PICT, Pune — <strong>Pursuing</strong></p>
+            </div>
+            <div class="edu-badge current">Now</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ SKILLS ═══════════════ -->
+    <section class="skills" id="skill-section">
+      <div class="section-label reveal reveal-up">02 — Skills</div>
+      <h2 class="section-title reveal reveal-up">My Toolkit</h2>
+
+      <div class="skills-grid">
+        <!-- Card 1 -->
+        <div class="skill-card reveal reveal-left">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap purple"><i class="fa-solid fa-code"></i></div>
+            <h3>Programming</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/python" height="36" alt="Python" class="skill_img" />
+              <span>Python</span>
+            </div>
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/cplusplus" height="36" alt="C++" class="skill_img" />
+              <span>C++</span>
+            </div>
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/mysql" height="36" alt="MySQL" class="skill_img" />
+              <span>MySQL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="skill-card reveal reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap pink"><i class="fa-solid fa-globe"></i></div>
+            <h3>Web Development</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/html5" height="36" alt="HTML" class="skill_img" />
+              <span>HTML5</span>
+            </div>
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/css" height="36" alt="CSS" class="skill_img" />
+              <span>CSS3</span>
+            </div>
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/javascript" height="36" alt="JS" class="skill_img" />
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="skill-card reveal reveal-right">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap blue"><i class="fa-solid fa-wrench"></i></div>
+            <h3>Tools & Platforms</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <img src="https://cdn.simpleicons.org/github" height="36" alt="GitHub" class="skill_img" />
+              <span>GitHub</span>
+            </div>
+            <div class="skill-item">
+              <img src="https://img.icons8.com/color/48/visual-studio-code-2019.png" alt="VS Code" class="skill_img" style="height:36px;" />
+              <span>VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Learning now strip -->
+      <div class="learning-strip reveal reveal-up">
+        <span class="learning-label">Currently Learning →</span>
+        <div class="learning-tags">
+          <span class="ltag">Data Structures & Algorithms</span>
+          <span class="ltag">React.js</span>
+          <span class="ltag">Problem Solving</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ PROJECTS ═══════════════ -->
+    <section class="projects" id="projects-section">
+      <div class="section-label reveal reveal-up">03 — Projects</div>
+      <h2 class="section-title reveal reveal-up">What I've Built</h2>
+
+      <div class="projects-grid">
+        <div class="project-card reveal reveal-left" id="calculator">
+          <div class="project-top">
+            <div class="project-icon-wrap"><i class="fa-solid fa-calculator"></i></div>
+            <div class="project-links">
+              <a href="https://gauravi-pattiwar.github.io/Calculator/" target="_blank" class="proj-link" aria-label="Live Demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <h3>Calculator</h3>
+          <p>
+            A sleek calculator app built with HTML, CSS & JavaScript. Supports
+            all basic arithmetic operations with a clean, responsive UI.
+          </p>
+          <div class="project-img-wrap">
+            <img src="Calculator.png" alt="Calculator Project" class="project-img" />
+          </div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <a href="https://gauravi-pattiwar.github.io/Calculator/" target="_blank" class="btn-primary btn-sm">
+            Live Demo <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="project-card reveal reveal-right" id="tic-tac-toe">
+          <div class="project-top">
+            <div class="project-icon-wrap"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="project-links">
+              <a href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/" target="_blank" class="proj-link" aria-label="Live Demo">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <h3>Tic Tac Toe</h3>
+          <p>
+            Classic Tic Tac Toe game with a modern twist. Two players compete on
+            a 3×3 grid with automatic win detection and styled game states.
+          </p>
+          <div class="project-img-wrap">
+            <img src="Tic Tac Toe.png" alt="Tic Tac Toe Project" class="project-img" />
+          </div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <a href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/" target="_blank" class="btn-primary btn-sm">
+            Live Demo <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CONTACT ═══════════════ -->
+    <section class="contact" id="contact-section">
+      <div class="contact-glow"></div>
+      <div class="section-label reveal reveal-up">04 — Contact</div>
+      <h2 class="section-title reveal reveal-up">Let's Connect</h2>
+      <p class="contact-sub reveal reveal-up">
+        I'm open to new opportunities, collaborations, or just a friendly chat.
+        Drop me a message — I'll get back to you soon!
+      </p>
+
+      <a href="mailto:gauravipattiwar04@gmail.com" class="contact-email reveal reveal-up">
+        <i class="fa-solid fa-envelope"></i>
+        gauravipattiwar04@gmail.com
+        <span class="email-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <div class="contact-socials reveal reveal-up">
+        <a href="https://github.com/Gauravi-Pattiwar" target="_blank" class="contact-social-card">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow-ext"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab" target="_blank" class="contact-social-card">
+          <i class="fa-brands fa-linkedin-in"></i>
+          <span>LinkedIn</span>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow-ext"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+      <p>Designed & Built by <span class="gradient-text">Gauravi Pattiwar</span></p>
+      <p class="footer-sub">© 2025 · Made with <i class="fa-solid fa-heart" style="color:#c406b1"></i></p>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
     <script src="script.js"></script>
   </body>
 </html>
