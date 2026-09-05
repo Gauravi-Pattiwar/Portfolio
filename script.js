@@ -796,6 +796,8 @@ if (specPalette) {
 const specSourceBadges = document.querySelectorAll(".spec-badge-source");
 
 let draggedStampData = null;
+let selectedStampData = null;
+let suppressStickerClick = false;
 
 // Update stamp count badge
 function updateStampCount() {
@@ -829,6 +831,82 @@ document.addEventListener("click", (e) => {
 
 // Setup Drag & Drop from palette
 specSourceBadges.forEach((badge) => {
+  let touchPreview = null;
+  let touchMoved = false;
+  let touchData = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  badge.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse") return;
+
+    const sticker = stickers.find(({ id }) => id === badge.dataset.stickerId);
+    const stickerLabel = splitStickerLabel(
+      sticker?.label || "✨ 100% BUG FREE",
+    );
+    touchData = {
+      theme: sticker?.id || "sticker-holo",
+      text: stickerLabel.text,
+      icon: stickerLabel.icon,
+      bg: sticker?.bg || "",
+    };
+    touchStartX = e.clientX;
+    touchStartY = e.clientY;
+    touchMoved = false;
+    touchPreview = badge.cloneNode(true);
+    touchPreview.style.position = "fixed";
+    touchPreview.style.width = `${badge.getBoundingClientRect().width}px`;
+    touchPreview.style.pointerEvents = "none";
+    touchPreview.style.zIndex = "10000";
+    touchPreview.style.opacity = "0.9";
+    document.body.appendChild(touchPreview);
+    badge.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+
+  badge.addEventListener("pointermove", (e) => {
+    if (!touchPreview) return;
+    if (
+      Math.abs(e.clientX - touchStartX) > 8 ||
+      Math.abs(e.clientY - touchStartY) > 8
+    ) {
+      touchMoved = true;
+    }
+    touchPreview.style.left = `${e.clientX - touchPreview.offsetWidth / 2}px`;
+    touchPreview.style.top = `${e.clientY - touchPreview.offsetHeight / 2}px`;
+    e.preventDefault();
+  });
+
+  const finishTouchDrag = (e) => {
+    if (!touchPreview) return;
+
+    touchPreview.remove();
+    touchPreview = null;
+    if (touchMoved && touchData) {
+      const target = document
+        .elementFromPoint(e.clientX, e.clientY)
+        ?.closest(".portfolio-drop-zone");
+      if (target) {
+        const rect = target.getBoundingClientRect();
+        placeStamp(
+          target,
+          touchData.theme,
+          touchData.text,
+          touchData.icon,
+          Math.max(10, e.clientX - rect.left - 60),
+          Math.max(10, e.clientY - rect.top - 16),
+          touchData.bg,
+        );
+        suppressStickerClick = true;
+      }
+    }
+    touchData = null;
+    touchMoved = false;
+  };
+
+  badge.addEventListener("pointerup", finishTouchDrag);
+  badge.addEventListener("pointercancel", finishTouchDrag);
+
   badge.addEventListener("dragstart", (e) => {
     const sticker = stickers.find(({ id }) => id === badge.dataset.stickerId);
     const stickerLabel = splitStickerLabel(
@@ -844,44 +922,32 @@ specSourceBadges.forEach((badge) => {
     e.dataTransfer.effectAllowed = "copy";
   });
 
-  // Click-to-place fallback: stamps first visible project card or hero
+  // Touch-friendly placement: select a sticker, then tap any drop zone.
   badge.addEventListener("click", () => {
+    if (suppressStickerClick) {
+      suppressStickerClick = false;
+      return;
+    }
     const sticker = stickers.find(({ id }) => id === badge.dataset.stickerId);
     const stickerLabel = splitStickerLabel(
       sticker?.label || "✨ 100% BUG FREE",
     );
-    const target =
-      document.querySelector(".project-card") ||
-      document.querySelector(".hero");
-    if (target) {
-      const rect = target.getBoundingClientRect();
-      const x = Math.min(
-        Math.max(20, Math.floor(Math.random() * (rect.width - 160))),
-        rect.width - 160,
-      );
-      const y = Math.min(
-        Math.max(20, Math.floor(Math.random() * (rect.height - 50))),
-        rect.height - 50,
-      );
-      placeStamp(
-        target,
-        sticker?.id || "sticker-holo",
-        stickerLabel.text,
-        stickerLabel.icon,
-        x,
-        y,
-        sticker?.bg || "",
-      );
-    }
+    selectedStampData = {
+      theme: sticker?.id || "sticker-holo",
+      text: stickerLabel.text,
+      icon: stickerLabel.icon,
+      bg: sticker?.bg || "",
+    };
+    specDrawer?.classList.remove("open");
+    specToggleBtn?.classList.remove("active");
   });
 });
 
 // Drop target containers
-const dropZones = document.querySelectorAll(
-  ".project-card, .hero, .skill-card, .about-card, .stats-strip",
-);
+const dropZones = document.querySelectorAll("section, .stats-strip");
 
 dropZones.forEach((zone) => {
+  zone.classList.add("portfolio-drop-zone");
   zone.addEventListener("dragover", (e) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "copy";
@@ -912,6 +978,25 @@ dropZones.forEach((zone) => {
     );
     draggedStampData = null;
   });
+
+  zone.addEventListener("click", (e) => {
+    if (!selectedStampData) return;
+
+    const rect = zone.getBoundingClientRect();
+    const x = Math.max(10, e.clientX - rect.left - 60);
+    const y = Math.max(10, e.clientY - rect.top - 16);
+    placeStamp(
+      zone,
+      selectedStampData.theme,
+      selectedStampData.text,
+      selectedStampData.icon,
+      x,
+      y,
+      selectedStampData.bg,
+    );
+    selectedStampData = null;
+    e.stopPropagation();
+  });
 });
 
 // Place Stamp Function
@@ -937,6 +1022,62 @@ function placeStamp(container, theme, text, icon, x, y, bg) {
     <span class="sticker-text">${text}</span>
     <button class="stamp-delete-btn" title="Peel off sticker" aria-label="Remove sticker">✕</button>
   `;
+
+  let moveState = null;
+  let currentContainer = container;
+  stampEl.addEventListener("pointerdown", (e) => {
+    if (e.target.closest(".stamp-delete-btn")) return;
+
+    const rect = stampEl.getBoundingClientRect();
+    moveState = {
+      offsetX: e.clientX - rect.left,
+      offsetY: e.clientY - rect.top,
+    };
+    stampEl.setPointerCapture(e.pointerId);
+    stampEl.style.transition = "none";
+    e.preventDefault();
+  });
+
+  stampEl.addEventListener("pointermove", (e) => {
+    if (!moveState) return;
+
+    const targetContainer = document
+      .elementFromPoint(e.clientX, e.clientY)
+      ?.closest(".portfolio-drop-zone");
+    if (targetContainer && targetContainer !== currentContainer) {
+      currentContainer = targetContainer;
+      currentContainer.appendChild(stampEl);
+    }
+
+    const containerRect = currentContainer.getBoundingClientRect();
+    const maxX = Math.max(10, containerRect.width - stampEl.offsetWidth - 10);
+    const maxY = Math.max(10, containerRect.height - stampEl.offsetHeight - 10);
+    const nextX = Math.min(
+      Math.max(10, e.clientX - containerRect.left - moveState.offsetX),
+      maxX,
+    );
+    const nextY = Math.min(
+      Math.max(10, e.clientY - containerRect.top - moveState.offsetY),
+      maxY,
+    );
+
+    stampEl.style.left = `${nextX}px`;
+    stampEl.style.top = `${nextY}px`;
+    stampEl.style.transform = `rotate(${tilt}deg)`;
+    e.preventDefault();
+  });
+
+  const stopMoving = (e) => {
+    if (!moveState) return;
+    moveState = null;
+    stampEl.style.transition = "";
+    if (stampEl.hasPointerCapture(e.pointerId)) {
+      stampEl.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  stampEl.addEventListener("pointerup", stopMoving);
+  stampEl.addEventListener("pointercancel", stopMoving);
 
   // Delete individual stamp on clicking 'x'
   const deleteBtn = stampEl.querySelector(".stamp-delete-btn");
