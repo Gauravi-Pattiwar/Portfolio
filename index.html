@@ -273,14 +273,6 @@
               style="height:36px;" />
             <span>VS Code</span>
           </div>
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/netlify" height="36" alt="Netlify" class="skill_img" />
-            <span>Netlify</span>
-          </div>
-          <div class="skill-item">
-            <img src="https://img.icons8.com/color/48/vite.png" alt="Vite" class="skill_img" style="height:36px;" />
-            <span>Vite</span>
-          </div>
         </div>
       </div>
     </div>
@@ -455,9 +447,102 @@
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="footer">
-    <p>Designed & Built by <span class="gradient-text">Gauravi Pattiwar</span></p>
-    <p class="footer-sub">© 2025 · Made with <i class="fa-solid fa-heart" style="color:#c406b1"></i></p>
+    <div class="footer-simple">
+      <div class="footer-logo">GP<span class="logo-dot">.</span></div>
+      <p class="footer-tagline">Computer Engineering Student @ PICT · Building for the web</p>
+      <div class="footer-social-links">
+        <a href="https://github.com/Gauravi-Pattiwar" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:gauravipattiwar04@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <div class="footer-meta">
+        <span>© 2025 Gauravi Pattiwar</span>
+        <span class="footer-dot">•</span>
+        <span><i class="fa-solid fa-location-dot"></i> Pune, India</span>
+      </div>
+    </div>
   </footer>
+
+  <!-- ═══════════════ FLOATING STICKY NOTE WIDGET ═══════════════ -->
+  <div class="sticky-note-wrapper" id="sticky-note-widget">
+    <!-- Collapsed Toggle Memo Pad (Aesthetic Grid Sticky Note) -->
+    <div class="sticky-memo-pad" id="sticky-toggle-btn" role="button" tabindex="0" aria-label="Open Scratchpad" title="Click to open Scratchpad">
+      <!-- Washi Tape -->
+      <div class="memo-washi-tape"></div>
+      
+      <!-- Corner Hearts Decor -->
+      <div class="memo-hearts memo-hearts-tr">
+        <span>♥</span><span>♥</span><span>♥</span>
+      </div>
+      <div class="memo-hearts memo-hearts-bl">
+        <span>♥</span><span>♥</span>
+      </div>
+
+      <!-- Memo Content -->
+      <div class="memo-inner">
+        <span class="memo-title">Scratchpad</span>
+        <span class="memo-sub">Click to write ✍️</span>
+      </div>
+
+      <!-- Active Content Badge -->
+      <span class="sticky-toggle-badge" id="sticky-toggle-badge"></span>
+    </div>
+
+    <!-- Expanded Sticky Note Card -->
+    <div class="sticky-note-card note-yellow" id="sticky-note-card">
+      <!-- 3D Pushpin -->
+      <div class="sticky-pin"></div>
+
+      <!-- Header -->
+      <div class="sticky-header">
+        <div class="sticky-title">
+          <i class="fa-solid fa-feather-pointed"></i>
+          <span>Scratchpad</span>
+        </div>
+        <div class="sticky-actions">
+          <button class="sticky-btn" id="sticky-send-btn" title="Send as Email to Gauravi" aria-label="Send email">
+            <i class="fa-regular fa-paper-plane"></i>
+          </button>
+          <button class="sticky-btn" id="sticky-copy-btn" title="Copy to clipboard" aria-label="Copy note">
+            <i class="fa-regular fa-copy"></i>
+          </button>
+          <button class="sticky-btn" id="sticky-clear-btn" title="Clear note" aria-label="Clear note">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+          <button class="sticky-btn sticky-close" id="sticky-close-btn" title="Minimize" aria-label="Minimize note">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Color Swatches Bar -->
+      <div class="sticky-swatches" id="sticky-swatches">
+        <button class="swatch-btn swatch-yellow active" data-color="yellow" title="Warm Canary"></button>
+        <button class="swatch-btn swatch-rose" data-color="rose" title="Rose Petal"></button>
+        <button class="swatch-btn swatch-mint" data-color="mint" title="Matcha Mint"></button>
+        <button class="swatch-btn swatch-blue" data-color="blue" title="Glacier Sky"></button>
+        <button class="swatch-btn swatch-dark" data-color="dark" title="Midnight Noir"></button>
+      </div>
+
+      <!-- Quick Starter Chips -->
+      <div class="sticky-prompts">
+        <button class="prompt-chip" data-prompt="Hi Gauravi! Loved exploring your portfolio. Let's connect!">👋 Say Hi</button>
+        <button class="prompt-chip" data-prompt="Hi Gauravi, I have an opportunity that fits your profile: ">💼 Opportunity</button>
+        <button class="prompt-chip" data-prompt="Quick feedback on your portfolio/projects: ">💡 Feedback</button>
+      </div>
+
+      <!-- Note Textarea with ruled line effect -->
+      <div class="sticky-body">
+        <textarea id="sticky-note-input" placeholder="Jot down notes or click a prompt above..." rows="4"></textarea>
+      </div>
+
+      <!-- Footer Bar -->
+      <div class="sticky-footer">
+        <span class="sticky-status" id="sticky-status-msg">Auto-saved ✓</span>
+        <span class="sticky-char-count" id="sticky-char-count">0 chars</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Back to top -->
   <button id="back-to-top" aria-label="Back to top">
