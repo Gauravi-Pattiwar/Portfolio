@@ -696,3 +696,150 @@ stickyClearBtn?.addEventListener("click", () => {
 
 // Initialize sticky note state
 loadStickyNote();
+
+
+/* ──────────────────────────────────────────────────────
+   18. ARCHITECTURAL BUILD STAMP INTERACTION
+   ────────────────────────────────────────────────────── */
+const specToggleBtn = document.getElementById("spec-toggle-btn");
+const specDrawer = document.getElementById("spec-drawer");
+const specDrawerClose = document.getElementById("spec-drawer-close");
+const specClearBtn = document.getElementById("spec-clear-btn");
+const specPlacedCount = document.getElementById("spec-placed-count");
+const specSourceBadges = document.querySelectorAll(".spec-badge-source");
+
+let draggedStampData = null;
+
+// Update stamp count badge
+function updateStampCount() {
+  const count = document.querySelectorAll(".placed-spec-stamp").length;
+  if (specPlacedCount) {
+    specPlacedCount.textContent = count;
+    specPlacedCount.style.display = count > 0 ? "inline-flex" : "none";
+  }
+}
+updateStampCount();
+
+// Toggle Drawer
+specToggleBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const isOpen = specDrawer?.classList.toggle("open");
+  specToggleBtn.classList.toggle("active", isOpen);
+});
+
+specDrawerClose?.addEventListener("click", () => {
+  specDrawer?.classList.remove("open");
+  specToggleBtn?.classList.remove("active");
+});
+
+// Close drawer on outside click
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#spec-stamp-widget")) {
+    specDrawer?.classList.remove("open");
+    specToggleBtn?.classList.remove("active");
+  }
+});
+
+// Setup Drag & Drop from palette
+specSourceBadges.forEach((badge) => {
+  badge.addEventListener("dragstart", (e) => {
+    draggedStampData = {
+      theme: badge.dataset.theme || "sticker-holo",
+      text: badge.dataset.text || "100% BUG FREE",
+      icon: badge.dataset.icon || "✨",
+    };
+    e.dataTransfer.setData("text/plain", JSON.stringify(draggedStampData));
+    e.dataTransfer.effectAllowed = "copy";
+  });
+
+  // Click-to-place fallback: stamps first visible project card or hero
+  badge.addEventListener("click", () => {
+    const target = document.querySelector(".project-card") || document.querySelector(".hero");
+    if (target) {
+      const rect = target.getBoundingClientRect();
+      const x = Math.min(Math.max(20, Math.floor(Math.random() * (rect.width - 160))), rect.width - 160);
+      const y = Math.min(Math.max(20, Math.floor(Math.random() * (rect.height - 50))), rect.height - 50);
+      placeStamp(target, badge.dataset.theme || "sticker-holo", badge.dataset.text, badge.dataset.icon || "✨", x, y);
+    }
+  });
+});
+
+// Drop target containers
+const dropZones = document.querySelectorAll(".project-card, .hero, .skill-card, .about-card, .stats-strip");
+
+dropZones.forEach((zone) => {
+  zone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "copy";
+  });
+
+  zone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    let data = draggedStampData;
+    try {
+      const parsed = JSON.parse(e.dataTransfer.getData("text/plain"));
+      if (parsed && parsed.text) data = parsed;
+    } catch (err) {}
+
+    if (!data) return;
+
+    const rect = zone.getBoundingClientRect();
+    const x = Math.max(10, e.clientX - rect.left - 60);
+    const y = Math.max(10, e.clientY - rect.top - 16);
+
+    placeStamp(zone, data.theme || "sticker-holo", data.text, data.icon, x, y);
+    draggedStampData = null;
+  });
+});
+
+// Place Stamp Function
+function placeStamp(container, theme, text, icon, x, y) {
+  // Ensure container has relative positioning
+  const style = window.getComputedStyle(container);
+  if (style.position === "static") {
+    container.style.position = "relative";
+  }
+
+  const tilt = (Math.random() * 8 - 4).toFixed(1); // -4deg to +4deg organic sticker tilt
+
+  const stampEl = document.createElement("div");
+  stampEl.className = `placed-spec-stamp ${theme}`;
+  stampEl.style.left = `${x}px`;
+  stampEl.style.top = `${y}px`;
+  stampEl.style.transform = `rotate(${tilt}deg)`;
+
+  stampEl.innerHTML = `
+    <span class="sticker-gloss"></span>
+    <span class="sticker-icon">${icon}</span>
+    <span class="sticker-text">${text}</span>
+    <button class="stamp-delete-btn" title="Peel off sticker" aria-label="Remove sticker">✕</button>
+  `;
+
+  // Delete individual stamp on clicking 'x'
+  const deleteBtn = stampEl.querySelector(".stamp-delete-btn");
+  deleteBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    stampEl.style.transform = `scale(0.7) rotate(${tilt}deg)`;
+    stampEl.style.opacity = "0";
+    stampEl.style.transition = "transform 0.2s, opacity 0.2s";
+    setTimeout(() => {
+      stampEl.remove();
+      updateStampCount();
+    }, 200);
+  });
+
+  container.appendChild(stampEl);
+  updateStampCount();
+}
+
+// Clear all placed stamps
+specClearBtn?.addEventListener("click", () => {
+  const allStamps = document.querySelectorAll(".placed-spec-stamp");
+  allStamps.forEach((s) => {
+    s.style.transform = "scale(0.7)";
+    s.style.opacity = "0";
+    s.style.transition = "transform 0.2s, opacity 0.2s";
+    setTimeout(() => s.remove(), 200);
+  });
+  setTimeout(updateStampCount, 220);
+});

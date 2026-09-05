@@ -1976,6 +1976,354 @@ body.dark-mode .sticky-note-card:not(.note-yellow):not(.note-rose):not(.note-min
   }
 }
 
+/* ── Architectural Build Stamp Widget ──────────────────── */
+.spec-stamp-widget {
+  position: fixed;
+  bottom: 32px;
+  right: 88px;
+  z-index: 9400;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Floating Toggle Badge */
+.spec-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 15px 9px 12px;
+  background: rgba(22, 16, 21, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  color: #f7edea;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  font-family: 'Fira Code', monospace;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.spec-toggle-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(159, 18, 57, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.spec-toggle-btn.active {
+  border-color: var(--accent);
+  background: rgba(36, 20, 28, 0.95);
+}
+
+.spec-icon {
+  font-size: 13px;
+}
+
+.spec-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--grad);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  margin-left: 2px;
+}
+
+/* Spec Drawer / Palette */
+.spec-drawer {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: 0;
+  width: 320px;
+  background: rgba(18, 13, 17, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  display: none;
+  opacity: 0;
+  transform: translateY(12px) scale(0.95);
+  transform-origin: bottom right;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.spec-drawer.open {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.spec-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.spec-drawer-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fb7185;
+  letter-spacing: 1.2px;
+}
+
+.spec-drawer-title i {
+  font-size: 13px;
+  color: #d97706;
+}
+
+.spec-drawer-close {
+  background: transparent;
+  border: none;
+  color: #a8a29e;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.spec-drawer-close:hover {
+  color: #f7edea;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.spec-drawer-hint {
+  font-size: 10.5px;
+  color: #a8a29e;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+/* Palette 2-column sticker grid */
+.spec-stamps-palette {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+/* Base Vinyl Sticker Styling */
+.sticker-item,
+.placed-spec-stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  cursor: grab;
+  user-select: none;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s, filter 0.2s;
+}
+
+.sticker-item:active {
+  cursor: grabbing;
+}
+
+.sticker-item:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35), 0 2px 5px rgba(0, 0, 0, 0.18);
+}
+
+.sticker-gloss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45), transparent);
+  border-radius: 999px 999px 0 0;
+  pointer-events: none;
+}
+
+.sticker-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.sticker-text {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+/* 1. Holographic Prismatic Rainbow */
+.sticker-holo {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 20%, #a1c4fd 40%, #c2e9fb 60%, #d4fc79 80%, #ffc3a0 100%);
+  background-size: 200% 200%;
+  color: #1e1b4b !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  animation: holoShift 4s ease infinite;
+}
+
+@keyframes holoShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* 2. Luxury Rose Gold & Diamond */
+.sticker-gold {
+  background: linear-gradient(135deg, #ffe4e6 0%, #f472b6 50%, #db2777 100%);
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(131, 24, 67, 0.5);
+}
+
+/* 3. Electric Amber 60FPS Speed */
+.sticker-speed {
+  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+  color: #451a03 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: skewX(-3deg);
+}
+.sticker-speed:hover {
+  transform: skewX(-3deg) translateY(-2px) scale(1.05);
+}
+
+/* 4. Chai Latte Cozy Dev */
+.sticker-chai {
+  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 50%, #ea580c 100%);
+  color: #431407 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* 5. Cyber Rocket Ship to Prod */
+.sticker-cyber {
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%);
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* 6. Blush Velvet Crafted With Love */
+.sticker-love {
+  background: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #9f1239 100%);
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Drawer footer */
+.spec-drawer-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.spec-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #f87171;
+  font-family: 'Fira Code', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.spec-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+  transform: translateY(-1px);
+}
+
+/* ── Placed Spec Stamps / Stickers ─────────────────────── */
+.placed-spec-stamp {
+  position: absolute;
+  z-index: 45;
+  cursor: default;
+  pointer-events: auto;
+  animation: stickerSlap 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.placed-spec-stamp:hover {
+  z-index: 50;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.placed-spec-stamp .stamp-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 9px;
+  margin-left: 4px;
+  opacity: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.2s, background 0.2s, transform 0.2s;
+}
+
+.placed-spec-stamp:hover .stamp-delete-btn {
+  opacity: 1;
+}
+
+.placed-spec-stamp .stamp-delete-btn:hover {
+  background: #ef4444;
+  color: #fff;
+  transform: scale(1.15);
+}
+
+@keyframes stickerSlap {
+  0% {
+    transform: scale(1.6) rotate(0deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(0.92);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Mobile & Touch: Disable / Hide */
+@media (max-width: 768px), (pointer: coarse) {
+  .spec-stamp-widget,
+  .placed-spec-stamp {
+    display: none !important;
+  }
+}
+
 /* ── Back to Top ──────────────────────────────────────── */
 #back-to-top {
   position: fixed;

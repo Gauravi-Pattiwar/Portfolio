@@ -544,12 +544,88 @@
     </div>
   </div>
 
+  <!-- ═══════════════ INTERACTIVE STICKER PACK WIDGET ═══════════════ -->
+  <div class="spec-stamp-widget" id="spec-stamp-widget">
+    <!-- Floating Control Badge -->
+    <button class="spec-toggle-btn" id="spec-toggle-btn" aria-label="Toggle Sticker Pack" title="Slap Stickers on Portfolio">
+      <span class="spec-icon">✨</span>
+      <span class="spec-label">Sticker Pack</span>
+      <span class="spec-count" id="spec-placed-count">0</span>
+    </button>
+
+    <!-- Sticker Sheet Drawer / Palette -->
+    <div class="spec-drawer" id="spec-drawer" role="dialog" aria-label="Interactive Sticker Pack">
+      <div class="spec-drawer-header">
+        <div class="spec-drawer-title">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>PORTFOLIO STICKERS</span>
+        </div>
+        <button class="spec-drawer-close" id="spec-drawer-close" aria-label="Close Sticker Pack">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <p class="spec-drawer-hint">Drag & slap these collectible stickers onto any project card or section! 🎨</p>
+
+      <div class="spec-stamps-palette" id="spec-stamps-palette">
+        <!-- 1. Holographic Bug Free -->
+        <div class="spec-badge-source sticker-item sticker-holo" draggable="true" data-theme="sticker-holo" data-text="100% BUG FREE" data-icon="✨">
+          <span class="sticker-gloss"></span>
+          <span class="sticker-icon">✨</span>
+          <span class="sticker-text">100% BUG FREE</span>
+        </div>
+
+        <!-- 2. Luxury Rose Gold Pixel Perfect -->
+        <div class="spec-badge-source sticker-item sticker-gold" draggable="true" data-theme="sticker-gold" data-text="PIXEL PERFECT" data-icon="💎">
+          <span class="sticker-gloss"></span>
+          <span class="sticker-icon">💎</span>
+          <span class="sticker-text">PIXEL PERFECT</span>
+        </div>
+
+        <!-- 3. Electric 60FPS Speed Bolt -->
+        <div class="spec-badge-source sticker-item sticker-speed" draggable="true" data-theme="sticker-speed" data-text="60FPS SMOOTH" data-icon="⚡">
+          <span class="sticker-gloss"></span>
+          <span class="sticker-icon">⚡</span>
+          <span class="sticker-text">60FPS SMOOTH</span>
+        </div>
+
+        <!-- 4. Cozy Chai Latte Dev -->
+        <div class="spec-badge-source sticker-item sticker-chai" draggable="true" data-theme="sticker-chai" data-text="POWERED BY CHAI" data-icon="☕">
+          <span class="sticker-gloss"></span>
+          <span class="sticker-icon">☕</span>
+          <span class="sticker-text">POWERED BY CHAI</span>
+        </div>
+
+        <!-- 5. Cyber Rocket Ship to Prod -->
+        <div class="spec-badge-source sticker-item sticker-cyber" draggable="true" data-theme="sticker-cyber" data-text="SHIP TO PROD" data-icon="🚀">
+          <span class="sticker-gloss"></span>
+          <span class="sticker-icon">🚀</span>
+          <span class="sticker-text">SHIP TO PROD</span>
+        </div>
+
+        <!-- 6. Blush Rose Crafted With Love -->
+        <div class="spec-badge-source sticker-item sticker-love" draggable="true" data-theme="sticker-love" data-text="CRAFTED W/ LOVE" data-icon="💖">
+          <span class="sticker-gloss"></span>
+          <span class="sticker-icon">💖</span>
+          <span class="sticker-text">CRAFTED W/ LOVE</span>
+        </div>
+      </div>
+
+      <div class="spec-drawer-footer">
+        <button class="spec-clear-btn" id="spec-clear-btn" title="Remove all placed stickers">
+          <i class="fa-regular fa-trash-can"></i>
+          <span>Clear Stickers</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Back to top -->
   <button id="back-to-top" aria-label="Back to top">
     <i class="fa-solid fa-chevron-up"></i>
   </button>
 
-  <script src="script.js?v=2.2"></script>
+  <script src="script.js?v=2.3"></script>
 </body>
 
 </html>
