@@ -9,9 +9,12 @@ const cursorDot = document.getElementById("cursor-dot");
 const cursorRing = document.getElementById("cursor-ring");
 
 // Current & target positions
-let dotX = -100, dotY = -100;
-let ringX = -100, ringY = -100;
-let targetX = -100, targetY = -100;
+let dotX = -100,
+  dotY = -100;
+let ringX = -100,
+  ringY = -100;
+let targetX = -100,
+  targetY = -100;
 let cursorVisible = false;
 
 function updateCursor(e) {
@@ -22,8 +25,8 @@ function updateCursor(e) {
   dotX = targetX;
   dotY = targetY;
   // Position from center: subtract half the dot size (4px)
-  cursorDot.style.left = (dotX - 4) + "px";
-  cursorDot.style.top = (dotY - 4) + "px";
+  cursorDot.style.left = dotX - 4 + "px";
+  cursorDot.style.top = dotY - 4 + "px";
 }
 
 window.addEventListener("mousemove", updateCursor);
@@ -33,8 +36,8 @@ function ringLoop() {
   ringX += (targetX - ringX) * 0.13;
   ringY += (targetY - ringY) * 0.13;
   // Position from center: subtract half ring size (17px)
-  cursorRing.style.left = (ringX - 17) + "px";
-  cursorRing.style.top = (ringY - 17) + "px";
+  cursorRing.style.left = ringX - 17 + "px";
+  cursorRing.style.top = ringY - 17 + "px";
   requestAnimationFrame(ringLoop);
 }
 ringLoop();
@@ -50,12 +53,16 @@ document.addEventListener("mouseleave", () => {
 });
 
 // Hover state on interactive elements
-const hoverables = "a, button, li, .card, .skill-card, .project-card, .skill_img, .social-chip, .contact-social-card, .edu-card, .ltag, .proj-link, #back-to-top";
-document.querySelectorAll(hoverables).forEach(el => {
-  el.addEventListener("mouseenter", () => document.body.classList.add("cursor-hover"));
-  el.addEventListener("mouseleave", () => document.body.classList.remove("cursor-hover"));
+const hoverables =
+  "a, button, li, .card, .skill-card, .project-card, .skill_img, .social-chip, .contact-social-card, .edu-card, .ltag, .proj-link, #back-to-top";
+document.querySelectorAll(hoverables).forEach((el) => {
+  el.addEventListener("mouseenter", () =>
+    document.body.classList.add("cursor-hover"),
+  );
+  el.addEventListener("mouseleave", () =>
+    document.body.classList.remove("cursor-hover"),
+  );
 });
-
 
 /* ──────────────────────────────────────────────────────
    2.  PARTICLE CANVAS
@@ -68,13 +75,18 @@ function resizeCanvas() {
   canvas.height = window.innerHeight;
 }
 resizeCanvas();
-window.addEventListener("resize", () => { resizeCanvas(); initParticles(); });
+window.addEventListener("resize", () => {
+  resizeCanvas();
+  initParticles();
+});
 
 const PARTICLE_COUNT = 55;
 let particles = [];
 
 class Particle {
-  constructor() { this.init(); }
+  constructor() {
+    this.init();
+  }
   init() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
@@ -93,7 +105,9 @@ class Particle {
     const isDark = document.body.classList.contains("dark-mode");
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = isDark ? `rgba(251, 113, 133, ${this.alpha * 0.9})` : `rgba(159, 18, 57, ${this.alpha * 0.85})`;
+    ctx.fillStyle = isDark
+      ? `rgba(251, 113, 133, ${this.alpha * 0.9})`
+      : `rgba(159, 18, 57, ${this.alpha * 0.85})`;
     ctx.fill();
   }
 }
@@ -126,12 +140,14 @@ function drawLines() {
 
 function animateCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
+  particles.forEach((p) => {
+    p.update();
+    p.draw();
+  });
   drawLines();
   requestAnimationFrame(animateCanvas);
 }
 animateCanvas();
-
 
 /* ──────────────────────────────────────────────────────
    3.  TYPING EFFECT
@@ -144,7 +160,9 @@ const phrases = [
   "CS Student @ PICT",
   "Future Engineer",
 ];
-let phraseIdx = 0, charIdx = 0, deleting = false;
+let phraseIdx = 0,
+  charIdx = 0,
+  deleting = false;
 
 function typeLoop() {
   const cur = phrases[phraseIdx];
@@ -170,7 +188,6 @@ function typeLoop() {
 // Start after hero animations settle
 setTimeout(typeLoop, 1500);
 
-
 /* ──────────────────────────────────────────────────────
    4.  SCROLL PROGRESS BAR
    ────────────────────────────────────────────────────── */
@@ -178,9 +195,8 @@ const progressBar = document.getElementById("scroll-progress");
 window.addEventListener("scroll", () => {
   const scrolled = window.scrollY;
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.width = ((scrolled / maxScroll) * 100) + "%";
+  progressBar.style.width = (scrolled / maxScroll) * 100 + "%";
 });
-
 
 /* ──────────────────────────────────────────────────────
    5.  NAVBAR SCROLL EFFECTS + ACTIVE LINK
@@ -201,16 +217,18 @@ window.addEventListener("scroll", () => {
 
   // Active nav highlight
   let current = "";
-  sections.forEach(sec => {
+  sections.forEach((sec) => {
     if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
   });
-  Object.values(navLinks).forEach(id => document.getElementById(id)?.classList.remove("active"));
-  if (navLinks[current]) document.getElementById(navLinks[current])?.classList.add("active");
+  Object.values(navLinks).forEach((id) =>
+    document.getElementById(id)?.classList.remove("active"),
+  );
+  if (navLinks[current])
+    document.getElementById(navLinks[current])?.classList.add("active");
 
   // Back-to-top
   btt.classList.toggle("visible", window.scrollY > 400);
 });
-
 
 /* ──────────────────────────────────────────────────────
    6.  SMOOTH NAV SCROLL
@@ -235,9 +253,10 @@ Object.entries(scrollTargets).forEach(([id, selector]) => {
 // "View My Work" button
 document.getElementById("view-work-btn")?.addEventListener("click", (e) => {
   e.preventDefault();
-  document.querySelector("#projects-section")?.scrollIntoView({ behavior: "smooth" });
+  document
+    .querySelector("#projects-section")
+    ?.scrollIntoView({ behavior: "smooth" });
 });
-
 
 /* ──────────────────────────────────────────────────────
    6b. MOBILE HAMBURGER MENU
@@ -250,13 +269,12 @@ hamburgerBtn?.addEventListener("click", () => {
   navLinksEl.classList.toggle("open");
 });
 
-
 /* ──────────────────────────────────────────────────────
    7.  SCROLL-REVEAL (IntersectionObserver)
    ────────────────────────────────────────────────────── */
 // Stagger child delays
 function staggerReveal(parentSelector, childSelector, delayStep = 0.1) {
-  document.querySelectorAll(parentSelector).forEach(parent => {
+  document.querySelectorAll(parentSelector).forEach((parent) => {
     parent.querySelectorAll(childSelector).forEach((child, i) => {
       child.style.transitionDelay = `${i * delayStep}s`;
     });
@@ -270,34 +288,41 @@ staggerReveal(".stats-strip", ".stat-item", 0.08);
 staggerReveal(".hero-content", ".reveal-hero", 0.12);
 staggerReveal(".hero-visual", ".reveal-hero", 0.12);
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    } else {
-      // Only un-reveal for re-animations (skip hero elements)
-      if (!entry.target.classList.contains("no-re-reveal")) {
-        entry.target.classList.remove("visible");
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      } else {
+        // Only un-reveal for re-animations (skip hero elements)
+        if (!entry.target.classList.contains("no-re-reveal")) {
+          entry.target.classList.remove("visible");
+        }
       }
-    }
-  });
-}, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    });
+  },
+  { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+);
 
 // Reveal all .reveal elements
-document.querySelectorAll(".reveal, .reveal-hero").forEach(el => {
+document.querySelectorAll(".reveal, .reveal-hero").forEach((el) => {
   revealObserver.observe(el);
 });
 
 // Section title underline
-const titleObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add("line-visible");
-    else e.target.classList.remove("line-visible");
-  });
-}, { threshold: 0.5 });
+const titleObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add("line-visible");
+      else e.target.classList.remove("line-visible");
+    });
+  },
+  { threshold: 0.5 },
+);
 
-document.querySelectorAll(".section-title").forEach(t => titleObserver.observe(t));
-
+document
+  .querySelectorAll(".section-title")
+  .forEach((t) => titleObserver.observe(t));
 
 /* ──────────────────────────────────────────────────────
    8.  COUNTER ANIMATION
@@ -316,20 +341,24 @@ function animateCount(el, target, duration = 1200) {
   requestAnimationFrame(step);
 }
 
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll(".stat-num").forEach(el => {
-        const target = parseInt(el.dataset.target, 10);
-        animateCount(el, target);
-      });
-      counterObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll(".stat-num").forEach((el) => {
+          const target = parseInt(el.dataset.target, 10);
+          animateCount(el, target);
+        });
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.5 },
+);
 
-document.querySelectorAll(".stats-strip").forEach(el => counterObserver.observe(el));
-
+document
+  .querySelectorAll(".stats-strip")
+  .forEach((el) => counterObserver.observe(el));
 
 /* ──────────────────────────────────────────────────────
    9.  DARK MODE TOGGLE
@@ -351,7 +380,6 @@ if (localStorage.getItem("theme") === "dark") {
   if (darkIcon) darkIcon.className = "fa-solid fa-sun";
 }
 
-
 /* ──────────────────────────────────────────────────────
    10. BACK TO TOP
    ────────────────────────────────────────────────────── */
@@ -360,12 +388,11 @@ btt?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-
 /* ──────────────────────────────────────────────────────
    11. 3-D TILT on Project Cards
    ────────────────────────────────────────────────────── */
-document.querySelectorAll(".project-card").forEach(card => {
-  card.addEventListener("mousemove", e => {
+document.querySelectorAll(".project-card").forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
@@ -376,19 +403,18 @@ document.querySelectorAll(".project-card").forEach(card => {
   card.addEventListener("mouseleave", () => {
     card.style.transform = "";
     card.style.transition = "transform 0.5s ease";
-    setTimeout(() => card.style.transition = "", 500);
+    setTimeout(() => (card.style.transition = ""), 500);
   });
   card.addEventListener("mouseenter", () => {
     card.style.transition = "box-shadow 0.35s ease, transform 0.1s ease";
   });
 });
 
-
 /* ──────────────────────────────────────────────────────
    12. SKILL CARD GLOW on Hover
    ────────────────────────────────────────────────────── */
-document.querySelectorAll(".skill-card").forEach(card => {
-  card.addEventListener("mousemove", e => {
+document.querySelectorAll(".skill-card").forEach((card) => {
+  card.addEventListener("mousemove", (e) => {
     const rect = card.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -398,7 +424,6 @@ document.querySelectorAll(".skill-card").forEach(card => {
     card.style.background = "";
   });
 });
-
 
 /* ──────────────────────────────────────────────────────
    13. HERO — subtle parallax on scroll
@@ -411,12 +436,11 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
 /* ──────────────────────────────────────────────────────
    14. NAVBAR hover cursor expand (already handled by hover selector)
       Extra: Add ripple on nav links click
    ────────────────────────────────────────────────────── */
-document.querySelectorAll(".nav-links li").forEach(li => {
+document.querySelectorAll(".nav-links li").forEach((li) => {
   li.addEventListener("click", function (e) {
     const ripple = document.createElement("span");
     const rect = this.getBoundingClientRect();
@@ -446,12 +470,11 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-
 /* ──────────────────────────────────────────────────────
    15. MAGNETIC effect on buttons
    ────────────────────────────────────────────────────── */
 function magnetic(el, strength = 0.35) {
-  el.addEventListener("mousemove", e => {
+  el.addEventListener("mousemove", (e) => {
     const rect = el.getBoundingClientRect();
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
@@ -462,12 +485,13 @@ function magnetic(el, strength = 0.35) {
   el.addEventListener("mouseleave", () => {
     el.style.transform = "";
     el.style.transition = "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)";
-    setTimeout(() => el.style.transition = "", 400);
+    setTimeout(() => (el.style.transition = ""), 400);
   });
 }
 
-document.querySelectorAll(".social-chip, .contact-social-card, #back-to-top").forEach(el => magnetic(el, 0.3));
-
+document
+  .querySelectorAll(".social-chip, .contact-social-card, #back-to-top")
+  .forEach((el) => magnetic(el, 0.3));
 
 /* ──────────────────────────────────────────────────────
    16. PAGE LOAD — trigger hero reveals after slight delay
@@ -480,9 +504,8 @@ window.addEventListener("load", () => {
   }, 200);
 });
 
-
 /* ──────────────────────────────────────────────────────
-   17. INTERACTIVE STICKY NOTE / SCRATCHPAD WIDGET
+   17.SCRATCHPAD WIDGET
    ────────────────────────────────────────────────────── */
 const stickyWidget = document.getElementById("sticky-note-widget");
 const stickyToggleBtn = document.getElementById("sticky-toggle-btn");
@@ -580,21 +603,21 @@ function showStickyStatus(text, isSuccess = false) {
 function applyNoteColor(colorName) {
   if (!stickyCard) return;
   stickyCard.className = `sticky-note-card note-${colorName}`;
-  swatchBtns.forEach(btn => {
+  swatchBtns.forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.color === colorName);
   });
   localStorage.setItem(STICKY_COLOR_KEY, colorName);
 }
 
 // Swatch click handlers
-swatchBtns.forEach(btn => {
+swatchBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     applyNoteColor(btn.dataset.color);
   });
 });
 
 // Prompt chips click handlers
-promptChips.forEach(chip => {
+promptChips.forEach((chip) => {
   chip.addEventListener("click", () => {
     const promptText = chip.dataset.prompt;
     if (!stickyInput) return;
@@ -697,7 +720,6 @@ stickyClearBtn?.addEventListener("click", () => {
 // Initialize sticky note state
 loadStickyNote();
 
-
 /* ──────────────────────────────────────────────────────
    18. ARCHITECTURAL BUILD STAMP INTERACTION
    ────────────────────────────────────────────────────── */
@@ -706,6 +728,71 @@ const specDrawer = document.getElementById("spec-drawer");
 const specDrawerClose = document.getElementById("spec-drawer-close");
 const specClearBtn = document.getElementById("spec-clear-btn");
 const specPlacedCount = document.getElementById("spec-placed-count");
+const specPalette = document.getElementById("spec-stamps-palette");
+
+const stickers = [
+  {
+    id: "git-merge",
+    label: "🥲 git merge (with 100 conflicts)",
+    bg: "linear-gradient(135deg, #ef4444, #dc2626)",
+  },
+  {
+    id: "dsa-grind",
+    label: "🌳 binary tree inverted",
+    bg: "linear-gradient(135deg, #10b981, #059669)",
+  },
+  {
+    id: "laptop-fans",
+    label: "✈️ laptop fans sounding like a jet",
+    bg: "linear-gradient(135deg, #f59e0b, #d97706)",
+  },
+  {
+    id: "all-nighter",
+    label: "⏰ submitted at 11:59 PM",
+    bg: "linear-gradient(135deg, #ec4899, #db2777)",
+  },
+  {
+    id: "center-div",
+    label: "🙌 CSS flexbox magic",
+    bg: "linear-gradient(135deg, #6366f1, #4f46e5)",
+  },
+  {
+    id: "infinite-loop",
+    label: "🤦‍♀️ while(true) infinite loop",
+    bg: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
+  },
+  {
+    id: "inspect-element",
+    label: "🕵️ inspect element pro",
+    bg: "linear-gradient(135deg, #06b6d4, #0891b2)",
+  },
+  {
+    id: "works-local",
+    label: "🤷‍♀️ works fine on localhost:3000",
+    bg: "linear-gradient(135deg, #14b8a6, #0d9488)",
+  },
+];
+
+function splitStickerLabel(label) {
+  const [icon, ...words] = label.split(" ");
+  return { icon, text: words.join(" ") };
+}
+
+if (specPalette) {
+  specPalette.innerHTML = stickers
+    .map(({ id, label, bg }) => {
+      const { icon, text } = splitStickerLabel(label);
+      return `
+    <div class="spec-badge-source sticker-item ${id}" draggable="true" data-sticker-id="${id}" style="background: ${bg};">
+      <span class="sticker-gloss"></span>
+      <span class="sticker-icon">${icon}</span>
+      <span class="sticker-text">${text}</span>
+    </div>
+  `;
+    })
+    .join("");
+}
+
 const specSourceBadges = document.querySelectorAll(".spec-badge-source");
 
 let draggedStampData = null;
@@ -743,10 +830,15 @@ document.addEventListener("click", (e) => {
 // Setup Drag & Drop from palette
 specSourceBadges.forEach((badge) => {
   badge.addEventListener("dragstart", (e) => {
+    const sticker = stickers.find(({ id }) => id === badge.dataset.stickerId);
+    const stickerLabel = splitStickerLabel(
+      sticker?.label || "✨ 100% BUG FREE",
+    );
     draggedStampData = {
-      theme: badge.dataset.theme || "sticker-holo",
-      text: badge.dataset.text || "100% BUG FREE",
-      icon: badge.dataset.icon || "✨",
+      theme: sticker?.id || "sticker-holo",
+      text: stickerLabel.text,
+      icon: stickerLabel.icon,
+      bg: sticker?.bg || "",
     };
     e.dataTransfer.setData("text/plain", JSON.stringify(draggedStampData));
     e.dataTransfer.effectAllowed = "copy";
@@ -754,18 +846,40 @@ specSourceBadges.forEach((badge) => {
 
   // Click-to-place fallback: stamps first visible project card or hero
   badge.addEventListener("click", () => {
-    const target = document.querySelector(".project-card") || document.querySelector(".hero");
+    const sticker = stickers.find(({ id }) => id === badge.dataset.stickerId);
+    const stickerLabel = splitStickerLabel(
+      sticker?.label || "✨ 100% BUG FREE",
+    );
+    const target =
+      document.querySelector(".project-card") ||
+      document.querySelector(".hero");
     if (target) {
       const rect = target.getBoundingClientRect();
-      const x = Math.min(Math.max(20, Math.floor(Math.random() * (rect.width - 160))), rect.width - 160);
-      const y = Math.min(Math.max(20, Math.floor(Math.random() * (rect.height - 50))), rect.height - 50);
-      placeStamp(target, badge.dataset.theme || "sticker-holo", badge.dataset.text, badge.dataset.icon || "✨", x, y);
+      const x = Math.min(
+        Math.max(20, Math.floor(Math.random() * (rect.width - 160))),
+        rect.width - 160,
+      );
+      const y = Math.min(
+        Math.max(20, Math.floor(Math.random() * (rect.height - 50))),
+        rect.height - 50,
+      );
+      placeStamp(
+        target,
+        sticker?.id || "sticker-holo",
+        stickerLabel.text,
+        stickerLabel.icon,
+        x,
+        y,
+        sticker?.bg || "",
+      );
     }
   });
 });
 
 // Drop target containers
-const dropZones = document.querySelectorAll(".project-card, .hero, .skill-card, .about-card, .stats-strip");
+const dropZones = document.querySelectorAll(
+  ".project-card, .hero, .skill-card, .about-card, .stats-strip",
+);
 
 dropZones.forEach((zone) => {
   zone.addEventListener("dragover", (e) => {
@@ -787,13 +901,21 @@ dropZones.forEach((zone) => {
     const x = Math.max(10, e.clientX - rect.left - 60);
     const y = Math.max(10, e.clientY - rect.top - 16);
 
-    placeStamp(zone, data.theme || "sticker-holo", data.text, data.icon, x, y);
+    placeStamp(
+      zone,
+      data.theme || "sticker-holo",
+      data.text,
+      data.icon,
+      x,
+      y,
+      data.bg || "",
+    );
     draggedStampData = null;
   });
 });
 
 // Place Stamp Function
-function placeStamp(container, theme, text, icon, x, y) {
+function placeStamp(container, theme, text, icon, x, y, bg) {
   // Ensure container has relative positioning
   const style = window.getComputedStyle(container);
   if (style.position === "static") {
@@ -807,10 +929,11 @@ function placeStamp(container, theme, text, icon, x, y) {
   stampEl.style.left = `${x}px`;
   stampEl.style.top = `${y}px`;
   stampEl.style.transform = `rotate(${tilt}deg)`;
+  if (bg) stampEl.style.background = bg;
 
   stampEl.innerHTML = `
     <span class="sticker-gloss"></span>
-    <span class="sticker-icon">${icon}</span>
+    ${icon ? `<span class="sticker-icon">${icon}</span>` : ""}
     <span class="sticker-text">${text}</span>
     <button class="stamp-delete-btn" title="Peel off sticker" aria-label="Remove sticker">✕</button>
   `;

@@ -1,631 +1,818 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gauravi Pattiwar | Portfolio</title>
+    <meta
+      name="description"
+      content="Gauravi Pattiwar — Computer Engineering student at PICT, passionate about web development and building real-world projects."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=2.2" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gauravi Pattiwar | Portfolio</title>
-  <meta name="description"
-    content="Gauravi Pattiwar — Computer Engineering student at PICT, passionate about web development and building real-world projects." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&family=Fira+Code:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2.2" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
+  <body>
+    <!-- Custom cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
-<body>
-  <!-- Custom cursor -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-ring"></div>
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress"></div>
 
-  <!-- Scroll progress bar -->
-  <div id="scroll-progress"></div>
+    <!-- Particle background canvas -->
+    <canvas id="particle-canvas"></canvas>
 
-  <!-- Particle background canvas -->
-  <canvas id="particle-canvas"></canvas>
-
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
-  <nav class="nav_bar" id="navbar">
-    <div class="nav-logo">GP<span class="logo-dot">.</span></div>
-    <ul class="nav-links">
-      <li id="home-btn">Home</li>
-      <li id="about-btn">About</li>
-      <li id="skills-btn">Skills</li>
-      <li id="projects-btn">Projects</li>
-      <li id="contact-btn">Contact</li>
-    </ul>
-    <div class="nav-right">
-      <button id="dark-mode" aria-label="Toggle dark mode">
-        <i class="fa-solid fa-moon"></i>
-      </button>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section class="hero" id="hero-section">
-    <!-- Gradient mesh blobs -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-
-    <div class="hero-content">
-      <div class="hero-badge reveal-hero">
-        <span class="badge-dot"></span>
-        Available for opportunities
-      </div>
-
-      <p class="hero-greeting reveal-hero delay-1">Hello, I'm</p>
-      <h1 class="hero-name reveal-hero delay-2">
-        Gauravi<br /><span class="gradient-text">Pattiwar</span>
-      </h1>
-
-      <div class="hero-role reveal-hero delay-3">
-        <span class="role-prefix">// </span>
-        <span id="typed-text"></span>
-        <span class="typing-cursor">|</span>
-      </div>
-
-      <p class="hero-desc reveal-hero delay-4">
-        Computer Engineering student at <strong>PICT</strong> · Building delightful
-        web experiences with modern technologies.
-      </p>
-
-      <div class="hero-actions reveal-hero delay-5">
-        <a href="#projects-section" class="btn-primary" id="view-work-btn">
-          <span>View My Work</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <a href="mailto:gauravipattiwar04@gmail.com" class="btn-ghost">
-          <i class="fa-solid fa-envelope"></i>
-          <span>Get In Touch</span>
-        </a>
-      </div>
-
-      <div class="hero-socials reveal-hero delay-6">
-        <a href="https://github.com/Gauravi-Pattiwar" target="_blank" class="social-chip" aria-label="GitHub">
-          <i class="fa-brands fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab" target="_blank" class="social-chip"
-          aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="mailto:gauravipattiwar04@gmail.com" class="social-chip" aria-label="Email">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-visual reveal-hero delay-3">
-      <div class="profile-wrapper">
-        <div class="profile-ring"></div>
-        <div class="profile-ring ring-2"></div>
-        <img src="profile.jpg" alt="Gauravi Pattiwar" id="profile-pic" />
-        <div class="profile-tag tag-1">
-          <i class="fa-solid fa-code"></i> Web Dev
-        </div>
-        <div class="profile-tag tag-2">
-          <i class="fa-solid fa-database"></i> DSA
-        </div>
-        <div class="profile-tag tag-3">
-          <i class="fa-solid fa-star"></i> 94% in 10th
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="nav_bar" id="navbar">
+      <div class="nav-logo">GP<span class="logo-dot">.</span></div>
+      <ul class="nav-links">
+        <li id="home-btn">Home</li>
+        <li id="about-btn">About</li>
+        <li id="skills-btn">Skills</li>
+        <li id="projects-btn">Projects</li>
+        <li id="contact-btn">Contact</li>
+      </ul>
+      <div class="nav-right">
+        <button id="dark-mode" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <!-- <div class="scroll-hint">
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="hero-section">
+      <!-- Gradient mesh blobs -->
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge reveal-hero">
+          <span class="badge-dot"></span>
+          Available for opportunities
+        </div>
+
+        <p class="hero-greeting reveal-hero delay-1">Hello, I'm</p>
+        <h1 class="hero-name reveal-hero delay-2">
+          Gauravi<br /><span class="gradient-text">Pattiwar</span>
+        </h1>
+
+        <div class="hero-role reveal-hero delay-3">
+          <span class="role-prefix">// </span>
+          <span id="typed-text"></span>
+          <span class="typing-cursor">|</span>
+        </div>
+
+        <p class="hero-desc reveal-hero delay-4">
+          Computer Engineering student at <strong>PICT</strong> · Building
+          delightful web experiences with modern technologies.
+        </p>
+
+        <div class="hero-actions reveal-hero delay-5">
+          <a href="#projects-section" class="btn-primary" id="view-work-btn">
+            <span>View My Work</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="mailto:gauravipattiwar04@gmail.com" class="btn-ghost">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Get In Touch</span>
+          </a>
+        </div>
+
+        <div class="hero-socials reveal-hero delay-6">
+          <a
+            href="https://github.com/Gauravi-Pattiwar"
+            target="_blank"
+            class="social-chip"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab"
+            target="_blank"
+            class="social-chip"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a
+            href="mailto:gauravipattiwar04@gmail.com"
+            class="social-chip"
+            aria-label="Email"
+          >
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal-hero delay-3">
+        <div class="profile-wrapper">
+          <div class="profile-ring"></div>
+          <div class="profile-ring ring-2"></div>
+          <img src="profile.jpg" alt="Gauravi Pattiwar" id="profile-pic" />
+          <div class="profile-tag tag-1">
+            <i class="fa-solid fa-code"></i> Web Dev
+          </div>
+          <div class="profile-tag tag-2">
+            <i class="fa-solid fa-database"></i> DSA
+          </div>
+          <div class="profile-tag tag-3">
+            <i class="fa-solid fa-star"></i> 94% in 10th
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="scroll-hint">
       <div class="scroll-mouse">
         <div class="scroll-wheel"></div>
       </div>
       <span>Scroll</span>
     </div> -->
-  </section>
+    </section>
 
-  <!-- ═══════════════ STATS STRIP ═══════════════ -->
-  <div class="stats-strip">
-    <div class="stat-item reveal reveal-up">
-      <span class="stat-num" data-target="94">0</span><span class="stat-suffix">%</span>
-      <p>10th Score</p>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item reveal reveal-up delay-1">
-      <span class="stat-num" data-target="86">0</span><span class="stat-suffix">%</span>
-      <p>12th Score</p>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item reveal reveal-up delay-2">
-      <span class="stat-num" data-target="4">0</span><span class="stat-suffix">+</span>
-      <p>Projects Built</p>
-    </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item reveal reveal-up delay-3">
-      <span class="stat-num" data-target="5">0</span><span class="stat-suffix">+</span>
-      <p>Technologies</p>
-    </div>
-  </div>
-
-  <!-- ═══════════════ ABOUT ═══════════════ -->
-  <section class="about" id="about-section">
-    <div class="section-label reveal reveal-up">01 — About Me</div>
-    <h2 class="section-title reveal reveal-up">Who I Am</h2>
-
-    <div class="about-grid">
-      <div class="about-text reveal reveal-left">
-        <p>
-          I'm a <strong>Computer Engineering student at PICT</strong>, passionate about
-          building things for the web. I love turning ideas into elegant, functional
-          experiences.
-        </p>
-        <p>
-          Currently diving deep into <strong>Data Structures & Algorithms</strong> and
-          <strong>Web Development</strong> — always looking for opportunities to apply
-          knowledge to real-world problems.
-        </p>
-        <p>
-          When I'm not coding, I'm exploring new technologies, reading tech blogs, or
-          working on mini side projects to sharpen my skills.
-        </p>
-
-        <div class="about-tags">
-          <span class="tag"><i class="fa-solid fa-graduation-cap"></i> PICT, Pune</span>
-          <span class="tag"><i class="fa-solid fa-laptop-code"></i> B.E. Computer Engineering</span>
-          <span class="tag"><i class="fa-solid fa-location-dot"></i> Pune, India</span>
-        </div>
+    <!-- ═══════════════ STATS STRIP ═══════════════ -->
+    <div class="stats-strip">
+      <div class="stat-item reveal reveal-up">
+        <span class="stat-num" data-target="94">0</span
+        ><span class="stat-suffix">%</span>
+        <p>10th Score</p>
       </div>
-
-      <div class="about-right reveal reveal-right">
-        <div class="edu-card">
-          <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
-          <div class="edu-info">
-            <h4>Secondary School (10th)</h4>
-            <p>Secured <strong>94%</strong></p>
-          </div>
-          <div class="edu-badge">2021</div>
-        </div>
-        <div class="edu-card">
-          <div class="edu-icon"><i class="fa-solid fa-building-columns"></i></div>
-          <div class="edu-info">
-            <h4>Higher Secondary (12th)</h4>
-            <p>Secured <strong>86%</strong></p>
-          </div>
-          <div class="edu-badge">2023</div>
-        </div>
-        <div class="edu-card edu-card--active">
-          <div class="edu-icon"><i class="fa-solid fa-microchip"></i></div>
-          <div class="edu-info">
-            <h4>B.E. Computer Engineering</h4>
-            <p>PICT, Pune — <strong>Pursuing</strong></p>
-          </div>
-          <div class="edu-badge current">Now</div>
-        </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-up delay-1">
+        <span class="stat-num" data-target="86">0</span
+        ><span class="stat-suffix">%</span>
+        <p>12th Score</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ SKILLS ═══════════════ -->
-  <section class="skills" id="skill-section">
-    <div class="section-label reveal reveal-up">02 — Skills</div>
-    <h2 class="section-title reveal reveal-up">My Toolkit</h2>
-
-    <div class="skills-grid">
-      <!-- Card 1 -->
-      <div class="skill-card reveal reveal-left">
-        <div class="skill-card-header">
-          <div class="skill-icon-wrap purple"><i class="fa-solid fa-code"></i></div>
-          <h3>Programming</h3>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/python" height="36" alt="Python" class="skill_img" />
-            <span>Python</span>
-          </div>
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/cplusplus" height="36" alt="C++" class="skill_img" />
-            <span>C++</span>
-          </div>
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/mysql" height="36" alt="MySQL" class="skill_img" />
-            <span>MySQL</span>
-          </div>
-        </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-up delay-2">
+        <span class="stat-num" data-target="4">0</span
+        ><span class="stat-suffix">+</span>
+        <p>Projects Built</p>
       </div>
-
-      <!-- Card 2 -->
-      <div class="skill-card reveal reveal-up">
-        <div class="skill-card-header">
-          <div class="skill-icon-wrap pink"><i class="fa-solid fa-globe"></i></div>
-          <h3>Web Development</h3>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/html5" height="36" alt="HTML" class="skill_img" />
-            <span>HTML5</span>
-          </div>
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/css" height="36" alt="CSS" class="skill_img" />
-            <span>CSS3</span>
-          </div>
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/javascript" height="36" alt="JS" class="skill_img" />
-            <span>JavaScript</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="skill-card reveal reveal-right">
-        <div class="skill-card-header">
-          <div class="skill-icon-wrap blue"><i class="fa-solid fa-wrench"></i></div>
-          <h3>Tools & Platforms</h3>
-        </div>
-        <div class="skill-items">
-          <div class="skill-item">
-            <img src="https://cdn.simpleicons.org/github" height="36" alt="GitHub" class="skill_img" />
-            <span>GitHub</span>
-          </div>
-          <div class="skill-item">
-            <img src="https://img.icons8.com/color/48/visual-studio-code-2019.png" alt="VS Code" class="skill_img"
-              style="height:36px;" />
-            <span>VS Code</span>
-          </div>
-        </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal reveal-up delay-3">
+        <span class="stat-num" data-target="5">0</span
+        ><span class="stat-suffix">+</span>
+        <p>Technologies</p>
       </div>
     </div>
 
-    <!-- Learning now strip -->
-    <div class="learning-strip reveal reveal-up">
-      <span class="learning-label">Currently Learning →</span>
-      <div class="learning-tags">
-        <span class="ltag">Data Structures & Algorithms</span>
-        <span class="ltag">React.js</span>
-        <span class="ltag">Artificial Intelligence & Machine Learning</span>
-      </div>
-    </div>
-  </section>
+    <!-- ═══════════════ ABOUT ═══════════════ -->
+    <section class="about" id="about-section">
+      <div class="section-label reveal reveal-up">01 — About Me</div>
+      <h2 class="section-title reveal reveal-up">Who I Am</h2>
 
-  <!-- ═══════════════ PROJECTS ═══════════════ -->
-  <section class="projects" id="projects-section">
-    <div class="section-label reveal reveal-up">03 — Projects</div>
-    <h2 class="section-title reveal reveal-up">What I've Built</h2>
+      <div class="about-grid">
+        <div class="about-text reveal reveal-left">
+          <p>
+            I'm a <strong>Computer Engineering student at PICT</strong>,
+            passionate about building things for the web. I love turning ideas
+            into elegant, functional experiences.
+          </p>
+          <p>
+            Currently diving deep into
+            <strong>Data Structures & Algorithms</strong> and
+            <strong>Web Development</strong> — always looking for opportunities
+            to apply knowledge to real-world problems.
+          </p>
+          <p>
+            When I'm not coding, I'm exploring new technologies, reading tech
+            blogs, or working on mini side projects to sharpen my skills.
+          </p>
 
-    <div class="projects-grid">
-      <div class="project-card reveal reveal-left" id="calculator">
-        <div class="project-top">
-          <div class="project-icon-wrap"><i class="fa-solid fa-calculator"></i></div>
-          <div class="project-links">
-            <a href="https://gauravi-pattiwar.github.io/Calculator/" target="_blank" class="proj-link"
-              aria-label="Live Demo">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+          <div class="about-tags">
+            <span class="tag"
+              ><i class="fa-solid fa-graduation-cap"></i> PICT, Pune</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-laptop-code"></i> B.E. Computer
+              Engineering</span
+            >
+            <span class="tag"
+              ><i class="fa-solid fa-location-dot"></i> Pune, India</span
+            >
           </div>
         </div>
-        <h3>Calculator</h3>
-        <p>
-          A sleek calculator app built with HTML, CSS & JavaScript. Supports
-          all basic arithmetic operations with a clean, responsive UI.
-        </p>
-        <div class="project-img-wrap">
-          <img src="Calculator.png" alt="Calculator Project" class="project-img" />
-        </div>
-        <div class="project-tags">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        </div>
-        <a href="https://gauravi-pattiwar.github.io/Calculator/" target="_blank" class="btn-primary btn-sm">
-          Live Demo <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
 
-      <div class="project-card reveal reveal-right" id="tic-tac-toe">
-        <div class="project-top">
-          <div class="project-icon-wrap"><i class="fa-solid fa-gamepad"></i></div>
-          <div class="project-links">
-            <a href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/" target="_blank" class="proj-link"
-              aria-label="Live Demo">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+        <div class="about-right reveal reveal-right">
+          <div class="edu-card">
+            <div class="edu-icon"><i class="fa-solid fa-school"></i></div>
+            <div class="edu-info">
+              <h4>Secondary School (10th)</h4>
+              <p>Secured <strong>94%</strong></p>
+            </div>
+            <div class="edu-badge">2021</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-icon">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="edu-info">
+              <h4>Higher Secondary (12th)</h4>
+              <p>Secured <strong>86%</strong></p>
+            </div>
+            <div class="edu-badge">2023</div>
+          </div>
+          <div class="edu-card edu-card--active">
+            <div class="edu-icon"><i class="fa-solid fa-microchip"></i></div>
+            <div class="edu-info">
+              <h4>B.E. Computer Engineering</h4>
+              <p>PICT, Pune — <strong>Pursuing</strong></p>
+            </div>
+            <div class="edu-badge current">Now</div>
           </div>
         </div>
-        <h3>Tic Tac Toe</h3>
-        <p>
-          Classic Tic Tac Toe game with a modern twist. Two players compete on
-          a 3×3 grid with automatic win detection and styled game states.
-        </p>
-        <div class="project-img-wrap">
-          <img src="Tic Tac Toe.png" alt="Tic Tac Toe Project" class="project-img" />
-        </div>
-        <div class="project-tags">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span>
-        </div>
-        <a href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/" target="_blank" class="btn-primary btn-sm">
-          Live Demo <i class="fa-solid fa-arrow-right"></i>
-        </a>
       </div>
+    </section>
 
+    <!-- ═══════════════ SKILLS ═══════════════ -->
+    <section class="skills" id="skill-section">
+      <div class="section-label reveal reveal-up">02 — Skills</div>
+      <h2 class="section-title reveal reveal-up">My Toolkit</h2>
 
-      <div class="project-card reveal reveal-right" id="excurso">
-        <div class="project-top">
-          <div class="project-icon-wrap"><i class="fa-solid fa-suitcase-rolling"></i></div>
-          <div class="project-links">
-            <a href="" target="_blank" class="proj-link" aria-label="Live Demo">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+      <div class="skills-grid">
+        <!-- Card 1 -->
+        <div class="skill-card reveal reveal-left">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap purple">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3>Programming</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/python"
+                height="36"
+                alt="Python"
+                class="skill_img"
+              />
+              <span>Python</span>
+            </div>
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/cplusplus"
+                height="36"
+                alt="C++"
+                class="skill_img"
+              />
+              <span>C++</span>
+            </div>
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/mysql"
+                height="36"
+                alt="MySQL"
+                class="skill_img"
+              />
+              <span>MySQL</span>
+            </div>
           </div>
         </div>
-        <h3>Excurso</h3>
-        <p>
-          Travel planning often means jumping between destination guides, budget calculators, and itinerary planners.
-          Excurso brings these essentials together in one place, helping users turn a destination idea into a practical
-          trip plan based on their budget, duration, group size, and travel style.
 
-          It provides dynamic INR budget estimates and day-wise itineraries with ideal visiting times, making trip
-          planning simpler, faster, and more organized.
-
-        </p>
-        <div class="project-img-wrap">
-          <img src="Excurso.png" alt="Excurso Project" class="project-img" />
-        </div>
-        <div class="project-tags">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Node.js</span><span>Express.js</span>
-        </div>
-        <a href="#" target="_blank" class="btn-primary btn-sm">
-          Live Demo <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      </div>
-
-
-
-      <div class="project-card reveal reveal-right" id="medivoice">
-        <div class="project-top">
-          <div class="project-icon-wrap"><i class="fa-solid fa-pills"></i></div>
-          <div class="project-links">
-            <a href="" target="_blank" class="proj-link" aria-label="Live Demo">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
+        <!-- Card 2 -->
+        <div class="skill-card reveal reveal-up">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap pink">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3>Web Development</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/html5"
+                height="36"
+                alt="HTML"
+                class="skill_img"
+              />
+              <span>HTML5</span>
+            </div>
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/css"
+                height="36"
+                alt="CSS"
+                class="skill_img"
+              />
+              <span>CSS3</span>
+            </div>
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/javascript"
+                height="36"
+                alt="JS"
+                class="skill_img"
+              />
+              <span>JavaScript</span>
+            </div>
           </div>
         </div>
-        <h3>MediVoice</h3>
-        <p>
-          MediVoice is a voice-first medication management platform designed to make everyday medication routines
-          simpler and more accessible. It provides personalized voice reminders, medication tracking, adherence
-          insights, and caregiver support, helping users stay on schedule without relying solely on screens or
-          complicated interfaces.
 
-          Built with a focus on accessibility, simplicity, and real-world usability, MediVoice turns medication
-          management into a more connected and effortless experience.
-
-        </p>
-        <div class="project-img-wrap">
-          <img src="Medivoice.png" alt="Medivoice Project" class="project-img" />
+        <!-- Card 3 -->
+        <div class="skill-card reveal reveal-right">
+          <div class="skill-card-header">
+            <div class="skill-icon-wrap blue">
+              <i class="fa-solid fa-wrench"></i>
+            </div>
+            <h3>Tools & Platforms</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <img
+                src="https://cdn.simpleicons.org/github"
+                height="36"
+                alt="GitHub"
+                class="skill_img"
+              />
+              <span>GitHub</span>
+            </div>
+            <div class="skill-item">
+              <img
+                src="https://img.icons8.com/color/48/visual-studio-code-2019.png"
+                alt="VS Code"
+                class="skill_img"
+                style="height: 36px"
+              />
+              <span>VS Code</span>
+            </div>
+          </div>
         </div>
-        <div class="project-tags">
-          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Node.js</span>
-        </div>
-        <a href="#" target="_blank" class="btn-primary btn-sm">
-          Live Demo <i class="fa-solid fa-arrow-right"></i>
-        </a>
       </div>
 
+      <!-- Learning now strip -->
+      <div class="learning-strip reveal reveal-up">
+        <span class="learning-label">Currently Learning →</span>
+        <div class="learning-tags">
+          <span class="ltag">Data Structures & Algorithms</span>
+          <span class="ltag">React.js</span>
+          <span class="ltag">Artificial Intelligence & Machine Learning</span>
+        </div>
+      </div>
+    </section>
 
+    <!-- ═══════════════ PROJECTS ═══════════════ -->
+    <section class="projects" id="projects-section">
+      <div class="section-label reveal reveal-up">03 — Projects</div>
+      <h2 class="section-title reveal reveal-up">What I've Built</h2>
 
-    </div>
-  </section>
+      <div class="projects-grid">
+        <div class="project-card reveal reveal-left" id="calculator">
+          <div class="project-top">
+            <div class="project-icon-wrap">
+              <i class="fa-solid fa-calculator"></i>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://gauravi-pattiwar.github.io/Calculator/"
+                target="_blank"
+                class="proj-link"
+                aria-label="Live Demo"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <h3>Calculator</h3>
+          <p>
+            A sleek calculator app built with HTML, CSS & JavaScript. Supports
+            all basic arithmetic operations with a clean, responsive UI.
+          </p>
+          <div class="project-img-wrap">
+            <img
+              src="Calculator.png"
+              alt="Calculator Project"
+              class="project-img"
+            />
+          </div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <a
+            href="https://gauravi-pattiwar.github.io/Calculator/"
+            target="_blank"
+            class="btn-primary btn-sm"
+          >
+            Live Demo <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
 
-  <!-- ═══════════════ CONTACT ═══════════════ -->
-  <section class="contact" id="contact-section">
-    <div class="contact-glow"></div>
-    <div class="section-label reveal reveal-up">04 - Contact</div>
-    <h2 class="section-title reveal reveal-up">Let's Connect</h2>
-    <p class="contact-sub reveal reveal-up">
-      I'm open to new opportunities, collaborations, or just a friendly chat.
-      Drop me a message — I'll get back to you soon!
-    </p>
+        <div class="project-card reveal reveal-right" id="tic-tac-toe">
+          <div class="project-top">
+            <div class="project-icon-wrap">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div class="project-links">
+              <a
+                href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/"
+                target="_blank"
+                class="proj-link"
+                aria-label="Live Demo"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <h3>Tic Tac Toe</h3>
+          <p>
+            Classic Tic Tac Toe game with a modern twist. Two players compete on
+            a 3×3 grid with automatic win detection and styled game states.
+          </p>
+          <div class="project-img-wrap">
+            <img
+              src="Tic Tac Toe.png"
+              alt="Tic Tac Toe Project"
+              class="project-img"
+            />
+          </div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          </div>
+          <a
+            href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/"
+            target="_blank"
+            class="btn-primary btn-sm"
+          >
+            Live Demo <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
 
-    <a href="mailto:gauravipattiwar04@gmail.com" class="contact-email reveal reveal-up">
-      <i class="fa-solid fa-envelope"></i>
-      gauravipattiwar04@gmail.com
-      <span class="email-arrow"><i class="fa-solid fa-arrow-right"></i></span>
-    </a>
+        <div class="project-card reveal reveal-right" id="excurso">
+          <div class="project-top">
+            <div class="project-icon-wrap">
+              <i class="fa-solid fa-suitcase-rolling"></i>
+            </div>
+            <div class="project-links">
+              <a
+                href=""
+                target="_blank"
+                class="proj-link"
+                aria-label="Live Demo"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <h3>Excurso</h3>
+          <p>
+            Travel planning often means jumping between destination guides,
+            budget calculators, and itinerary planners. Excurso brings these
+            essentials together in one place, helping users turn a destination
+            idea into a practical trip plan based on their budget, duration,
+            group size, and travel style. It provides dynamic INR budget
+            estimates and day-wise itineraries with ideal visiting times, making
+            trip planning simpler, faster, and more organized.
+          </p>
+          <div class="project-img-wrap">
+            <img src="Excurso.png" alt="Excurso Project" class="project-img" />
+          </div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span
+            ><span>Node.js</span><span>Express.js</span>
+          </div>
+          <a href="#" target="_blank" class="btn-primary btn-sm">
+            Live Demo <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
 
-    <div class="contact-socials reveal reveal-up">
-      <a href="https://github.com/Gauravi-Pattiwar" target="_blank" class="contact-social-card">
-        <i class="fa-brands fa-github"></i>
-        <span>GitHub</span>
-        <i class="fa-solid fa-arrow-up-right-from-square arrow-ext"></i>
+        <div class="project-card reveal reveal-right" id="medivoice">
+          <div class="project-top">
+            <div class="project-icon-wrap">
+              <i class="fa-solid fa-pills"></i>
+            </div>
+            <div class="project-links">
+              <a
+                href=""
+                target="_blank"
+                class="proj-link"
+                aria-label="Live Demo"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+          <h3>MediVoice</h3>
+          <p>
+            MediVoice is a voice-first medication management platform designed
+            to make everyday medication routines simpler and more accessible. It
+            provides personalized voice reminders, medication tracking,
+            adherence insights, and caregiver support, helping users stay on
+            schedule without relying solely on screens or complicated
+            interfaces. Built with a focus on accessibility, simplicity, and
+            real-world usability, MediVoice turns medication management into a
+            more connected and effortless experience.
+          </p>
+          <div class="project-img-wrap">
+            <img
+              src="Medivoice.png"
+              alt="Medivoice Project"
+              class="project-img"
+            />
+          </div>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span
+            ><span>Node.js</span>
+          </div>
+          <a href="#" target="_blank" class="btn-primary btn-sm">
+            Live Demo <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ CONTACT ═══════════════ -->
+    <section class="contact" id="contact-section">
+      <div class="contact-glow"></div>
+      <div class="section-label reveal reveal-up">04 - Contact</div>
+      <h2 class="section-title reveal reveal-up">Let's Connect</h2>
+      <p class="contact-sub reveal reveal-up">
+        I'm open to new opportunities, collaborations, or just a friendly chat.
+        Drop me a message — I'll get back to you soon!
+      </p>
+
+      <a
+        href="mailto:gauravipattiwar04@gmail.com"
+        class="contact-email reveal reveal-up"
+      >
+        <i class="fa-solid fa-envelope"></i>
+        gauravipattiwar04@gmail.com
+        <span class="email-arrow"><i class="fa-solid fa-arrow-right"></i></span>
       </a>
-      <a href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab" target="_blank" class="contact-social-card">
-        <i class="fa-brands fa-linkedin-in"></i>
-        <span>LinkedIn</span>
-        <i class="fa-solid fa-arrow-up-right-from-square arrow-ext"></i>
-      </a>
-    </div>
-  </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer class="footer">
-    <div class="footer-simple">
-      <div class="footer-logo">GP<span class="logo-dot">.</span></div>
-      <p class="footer-tagline">Computer Engineering Student @ PICT · Building for the web</p>
-      <div class="footer-social-links">
-        <a href="https://github.com/Gauravi-Pattiwar" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="mailto:gauravipattiwar04@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <div class="contact-socials reveal reveal-up">
+        <a
+          href="https://github.com/Gauravi-Pattiwar"
+          target="_blank"
+          class="contact-social-card"
+        >
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow-ext"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab"
+          target="_blank"
+          class="contact-social-card"
+        >
+          <i class="fa-brands fa-linkedin-in"></i>
+          <span>LinkedIn</span>
+          <i class="fa-solid fa-arrow-up-right-from-square arrow-ext"></i>
+        </a>
       </div>
-      <div class="footer-meta">
-        <span>© 2025 Gauravi Pattiwar</span>
-        <span class="footer-dot">•</span>
-        <span><i class="fa-solid fa-location-dot"></i> Pune, India</span>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- ═══════════════ FLOATING STICKY NOTE WIDGET ═══════════════ -->
-  <div class="sticky-note-wrapper" id="sticky-note-widget">
-    <!-- Collapsed Toggle Memo Pad (Aesthetic Grid Sticky Note) -->
-    <div class="sticky-memo-pad" id="sticky-toggle-btn" role="button" tabindex="0" aria-label="Open Scratchpad" title="Click to open Scratchpad">
-      <!-- Washi Tape -->
-      <div class="memo-washi-tape"></div>
-      
-      <!-- Corner Hearts Decor -->
-      <div class="memo-hearts memo-hearts-tr">
-        <span>♥</span><span>♥</span><span>♥</span>
-      </div>
-      <div class="memo-hearts memo-hearts-bl">
-        <span>♥</span><span>♥</span>
-      </div>
-
-      <!-- Memo Content -->
-      <div class="memo-inner">
-        <span class="memo-title">Scratchpad</span>
-        <span class="memo-sub">Click to write ✍️</span>
-      </div>
-
-      <!-- Active Content Badge -->
-      <span class="sticky-toggle-badge" id="sticky-toggle-badge"></span>
-    </div>
-
-    <!-- Expanded Sticky Note Card -->
-    <div class="sticky-note-card note-yellow" id="sticky-note-card">
-      <!-- 3D Pushpin -->
-      <div class="sticky-pin"></div>
-
-      <!-- Header -->
-      <div class="sticky-header">
-        <div class="sticky-title">
-          <i class="fa-solid fa-feather-pointed"></i>
-          <span>Scratchpad</span>
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer">
+      <div class="footer-simple">
+        <div class="footer-logo">GP<span class="logo-dot">.</span></div>
+        <p class="footer-tagline">
+          Computer Engineering Student @ PICT · Building for the web
+        </p>
+        <div class="footer-social-links">
+          <a
+            href="https://github.com/Gauravi-Pattiwar"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/gauravi-pattiwar-755b673ab"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+          <a href="mailto:gauravipattiwar04@gmail.com" aria-label="Email"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
         </div>
-        <div class="sticky-actions">
-          <button class="sticky-btn" id="sticky-send-btn" title="Send as Email to Gauravi" aria-label="Send email">
-            <i class="fa-regular fa-paper-plane"></i>
+        <div class="footer-meta">
+          <span>© 2025 Gauravi Pattiwar</span>
+          <span class="footer-dot">•</span>
+          <span><i class="fa-solid fa-location-dot"></i> Pune, India</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════ FLOATING STICKY NOTE WIDGET ═══════════════ -->
+    <div class="sticky-note-wrapper" id="sticky-note-widget">
+      <!-- Collapsed Toggle Memo Pad (Aesthetic Grid Sticky Note) -->
+      <div
+        class="sticky-memo-pad"
+        id="sticky-toggle-btn"
+        role="button"
+        tabindex="0"
+        aria-label="Open Scratchpad"
+        title="Click to open Scratchpad"
+      >
+        <!-- Washi Tape -->
+        <div class="memo-washi-tape"></div>
+
+        <!-- Corner Hearts Decor -->
+        <div class="memo-hearts memo-hearts-tr">
+          <span>♥</span><span>♥</span><span>♥</span>
+        </div>
+        <div class="memo-hearts memo-hearts-bl">
+          <span>♥</span><span>♥</span>
+        </div>
+
+        <!-- Memo Content -->
+        <div class="memo-inner">
+          <span class="memo-title">Scratchpad</span>
+          <span class="memo-sub">Click to write ✍️</span>
+        </div>
+
+        <!-- Active Content Badge -->
+        <span class="sticky-toggle-badge" id="sticky-toggle-badge"></span>
+      </div>
+
+      <!-- Expanded Sticky Note Card -->
+      <div class="sticky-note-card note-yellow" id="sticky-note-card">
+        <!-- 3D Pushpin -->
+        <div class="sticky-pin"></div>
+
+        <!-- Header -->
+        <div class="sticky-header">
+          <div class="sticky-title">
+            <i class="fa-solid fa-feather-pointed"></i>
+            <span>Scratchpad</span>
+          </div>
+          <div class="sticky-actions">
+            <button
+              class="sticky-btn"
+              id="sticky-send-btn"
+              title="Send as Email to Gauravi"
+              aria-label="Send email"
+            >
+              <i class="fa-regular fa-paper-plane"></i>
+            </button>
+            <button
+              class="sticky-btn"
+              id="sticky-copy-btn"
+              title="Copy to clipboard"
+              aria-label="Copy note"
+            >
+              <i class="fa-regular fa-copy"></i>
+            </button>
+            <button
+              class="sticky-btn"
+              id="sticky-clear-btn"
+              title="Clear note"
+              aria-label="Clear note"
+            >
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+            <button
+              class="sticky-btn sticky-close"
+              id="sticky-close-btn"
+              title="Minimize"
+              aria-label="Minimize note"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Color Swatches Bar -->
+        <div class="sticky-swatches" id="sticky-swatches">
+          <button
+            class="swatch-btn swatch-yellow active"
+            data-color="yellow"
+            title="Warm Canary"
+          ></button>
+          <button
+            class="swatch-btn swatch-rose"
+            data-color="rose"
+            title="Rose Petal"
+          ></button>
+          <button
+            class="swatch-btn swatch-mint"
+            data-color="mint"
+            title="Matcha Mint"
+          ></button>
+          <button
+            class="swatch-btn swatch-blue"
+            data-color="blue"
+            title="Glacier Sky"
+          ></button>
+          <button
+            class="swatch-btn swatch-dark"
+            data-color="dark"
+            title="Midnight Noir"
+          ></button>
+        </div>
+
+        <!-- Quick Starter Chips -->
+        <div class="sticky-prompts">
+          <button
+            class="prompt-chip"
+            data-prompt="Hi Gauravi! Loved exploring your portfolio. Let's connect!"
+          >
+            👋 Say Hi
           </button>
-          <button class="sticky-btn" id="sticky-copy-btn" title="Copy to clipboard" aria-label="Copy note">
-            <i class="fa-regular fa-copy"></i>
+          <button
+            class="prompt-chip"
+            data-prompt="Hi Gauravi, I have an opportunity that fits your profile: "
+          >
+            💼 Opportunity
           </button>
-          <button class="sticky-btn" id="sticky-clear-btn" title="Clear note" aria-label="Clear note">
-            <i class="fa-regular fa-trash-can"></i>
+          <button
+            class="prompt-chip"
+            data-prompt="Quick feedback on your portfolio/projects: "
+          >
+            💡 Feedback
           </button>
-          <button class="sticky-btn sticky-close" id="sticky-close-btn" title="Minimize" aria-label="Minimize note">
+        </div>
+
+        <!-- Note Textarea with ruled line effect -->
+        <div class="sticky-body">
+          <textarea
+            id="sticky-note-input"
+            placeholder="Jot down notes or click a prompt above..."
+            rows="4"
+          ></textarea>
+        </div>
+
+        <!-- Footer Bar -->
+        <div class="sticky-footer">
+          <span class="sticky-status" id="sticky-status-msg">Auto-saved ✓</span>
+          <span class="sticky-char-count" id="sticky-char-count">0 chars</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ INTERACTIVE STICKER PACK WIDGET ═══════════════ -->
+    <div class="spec-stamp-widget" id="spec-stamp-widget">
+      <!-- Floating Control Badge -->
+      <button
+        class="spec-toggle-btn"
+        id="spec-toggle-btn"
+        aria-label="Toggle Sticker Pack"
+        title="Slap Stickers on Portfolio"
+      >
+        <span class="spec-icon">✨</span>
+        <span class="spec-label">Sticker Pack</span>
+        <span class="spec-count" id="spec-placed-count">0</span>
+      </button>
+
+      <!-- Sticker Sheet Drawer / Palette -->
+      <div
+        class="spec-drawer"
+        id="spec-drawer"
+        role="dialog"
+        aria-label="Interactive Sticker Pack"
+      >
+        <div class="spec-drawer-header">
+          <div class="spec-drawer-title">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>PORTFOLIO STICKERS</span>
+          </div>
+          <button
+            class="spec-drawer-close"
+            id="spec-drawer-close"
+            aria-label="Close Sticker Pack"
+          >
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
-      </div>
 
-      <!-- Color Swatches Bar -->
-      <div class="sticky-swatches" id="sticky-swatches">
-        <button class="swatch-btn swatch-yellow active" data-color="yellow" title="Warm Canary"></button>
-        <button class="swatch-btn swatch-rose" data-color="rose" title="Rose Petal"></button>
-        <button class="swatch-btn swatch-mint" data-color="mint" title="Matcha Mint"></button>
-        <button class="swatch-btn swatch-blue" data-color="blue" title="Glacier Sky"></button>
-        <button class="swatch-btn swatch-dark" data-color="dark" title="Midnight Noir"></button>
-      </div>
+        <p class="spec-drawer-hint">
+          Slap these CS stickers onto any project card!
+        </p>
 
-      <!-- Quick Starter Chips -->
-      <div class="sticky-prompts">
-        <button class="prompt-chip" data-prompt="Hi Gauravi! Loved exploring your portfolio. Let's connect!">👋 Say Hi</button>
-        <button class="prompt-chip" data-prompt="Hi Gauravi, I have an opportunity that fits your profile: ">💼 Opportunity</button>
-        <button class="prompt-chip" data-prompt="Quick feedback on your portfolio/projects: ">💡 Feedback</button>
-      </div>
+        <div class="spec-stamps-palette" id="spec-stamps-palette"></div>
 
-      <!-- Note Textarea with ruled line effect -->
-      <div class="sticky-body">
-        <textarea id="sticky-note-input" placeholder="Jot down notes or click a prompt above..." rows="4"></textarea>
-      </div>
-
-      <!-- Footer Bar -->
-      <div class="sticky-footer">
-        <span class="sticky-status" id="sticky-status-msg">Auto-saved ✓</span>
-        <span class="sticky-char-count" id="sticky-char-count">0 chars</span>
+        <div class="spec-drawer-footer">
+          <button
+            class="spec-clear-btn"
+            id="spec-clear-btn"
+            title="Remove all placed stickers"
+          >
+            <i class="fa-regular fa-trash-can"></i>
+            <span>Clear Stickers</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- ═══════════════ INTERACTIVE STICKER PACK WIDGET ═══════════════ -->
-  <div class="spec-stamp-widget" id="spec-stamp-widget">
-    <!-- Floating Control Badge -->
-    <button class="spec-toggle-btn" id="spec-toggle-btn" aria-label="Toggle Sticker Pack" title="Slap Stickers on Portfolio">
-      <span class="spec-icon">✨</span>
-      <span class="spec-label">Sticker Pack</span>
-      <span class="spec-count" id="spec-placed-count">0</span>
+    <!-- Back to top -->
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="fa-solid fa-chevron-up"></i>
     </button>
 
-    <!-- Sticker Sheet Drawer / Palette -->
-    <div class="spec-drawer" id="spec-drawer" role="dialog" aria-label="Interactive Sticker Pack">
-      <div class="spec-drawer-header">
-        <div class="spec-drawer-title">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-          <span>PORTFOLIO STICKERS</span>
-        </div>
-        <button class="spec-drawer-close" id="spec-drawer-close" aria-label="Close Sticker Pack">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-
-      <p class="spec-drawer-hint">Drag & slap these collectible stickers onto any project card or section! 🎨</p>
-
-      <div class="spec-stamps-palette" id="spec-stamps-palette">
-        <!-- 1. Holographic Bug Free -->
-        <div class="spec-badge-source sticker-item sticker-holo" draggable="true" data-theme="sticker-holo" data-text="100% BUG FREE" data-icon="✨">
-          <span class="sticker-gloss"></span>
-          <span class="sticker-icon">✨</span>
-          <span class="sticker-text">100% BUG FREE</span>
-        </div>
-
-        <!-- 2. Luxury Rose Gold Pixel Perfect -->
-        <div class="spec-badge-source sticker-item sticker-gold" draggable="true" data-theme="sticker-gold" data-text="PIXEL PERFECT" data-icon="💎">
-          <span class="sticker-gloss"></span>
-          <span class="sticker-icon">💎</span>
-          <span class="sticker-text">PIXEL PERFECT</span>
-        </div>
-
-        <!-- 3. Electric 60FPS Speed Bolt -->
-        <div class="spec-badge-source sticker-item sticker-speed" draggable="true" data-theme="sticker-speed" data-text="60FPS SMOOTH" data-icon="⚡">
-          <span class="sticker-gloss"></span>
-          <span class="sticker-icon">⚡</span>
-          <span class="sticker-text">60FPS SMOOTH</span>
-        </div>
-
-        <!-- 4. Cozy Chai Latte Dev -->
-        <div class="spec-badge-source sticker-item sticker-chai" draggable="true" data-theme="sticker-chai" data-text="POWERED BY CHAI" data-icon="☕">
-          <span class="sticker-gloss"></span>
-          <span class="sticker-icon">☕</span>
-          <span class="sticker-text">POWERED BY CHAI</span>
-        </div>
-
-        <!-- 5. Cyber Rocket Ship to Prod -->
-        <div class="spec-badge-source sticker-item sticker-cyber" draggable="true" data-theme="sticker-cyber" data-text="SHIP TO PROD" data-icon="🚀">
-          <span class="sticker-gloss"></span>
-          <span class="sticker-icon">🚀</span>
-          <span class="sticker-text">SHIP TO PROD</span>
-        </div>
-
-        <!-- 6. Blush Rose Crafted With Love -->
-        <div class="spec-badge-source sticker-item sticker-love" draggable="true" data-theme="sticker-love" data-text="CRAFTED W/ LOVE" data-icon="💖">
-          <span class="sticker-gloss"></span>
-          <span class="sticker-icon">💖</span>
-          <span class="sticker-text">CRAFTED W/ LOVE</span>
-        </div>
-      </div>
-
-      <div class="spec-drawer-footer">
-        <button class="spec-clear-btn" id="spec-clear-btn" title="Remove all placed stickers">
-          <i class="fa-regular fa-trash-can"></i>
-          <span>Clear Stickers</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Back to top -->
-  <button id="back-to-top" aria-label="Back to top">
-    <i class="fa-solid fa-chevron-up"></i>
-  </button>
-
-  <script src="script.js?v=2.3"></script>
-</body>
-
+    <script src="script.js?v=2.3"></script>
+  </body>
 </html>
