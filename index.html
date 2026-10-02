@@ -366,170 +366,38 @@
     </section>
 
     <!-- ═══════════════ PROJECTS ═══════════════ -->
-    <section class="projects" id="projects-section">
+    <section class="projects-section" id="projects-section">
       <div class="section-label reveal reveal-up">03 — Projects</div>
       <h2 class="section-title reveal reveal-up">What I've Built</h2>
 
-      <div class="projects-grid">
-        <div class="project-card reveal reveal-left" id="calculator">
-          <div class="project-top">
-            <div class="project-icon-wrap">
-              <i class="fa-solid fa-calculator"></i>
-            </div>
-            <div class="project-links">
-              <a
-                href="https://gauravi-pattiwar.github.io/Calculator/"
-                target="_blank"
-                class="proj-link"
-                aria-label="Live Demo"
-              >
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
+      <div
+        class="projects-terminal reveal reveal-up"
+        aria-label="Projects terminal explorer"
+      >
+        <div class="projects-terminal__header">
+          <div class="terminal-window-controls" aria-hidden="true">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
           </div>
-          <h3>Calculator</h3>
-          <p>
-            A sleek calculator app built with HTML, CSS & JavaScript. Supports
-            all basic arithmetic operations with a clean, responsive UI.
-          </p>
-          <div class="project-img-wrap">
-            <img
-              src="Calculator.png"
-              alt="Calculator Project"
-              class="project-img"
-            />
-          </div>
-          <div class="project-tags">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span>
-          </div>
-          <a
-            href="https://gauravi-pattiwar.github.io/Calculator/"
-            target="_blank"
-            class="btn-primary btn-sm"
+          <div class="projects-terminal__title">portfolio@projects:~</div>
+        </div>
+
+        <div class="projects-terminal__body">
+          <div class="terminal-line terminal-command">$ ls projects/</div>
+          <div
+            id="projects-terminal-list"
+            class="projects-terminal__list"
+            aria-live="polite"
+          ></div>
+          <div id="project-detail" class="project-detail" hidden></div>
+          <div
+            class="terminal-line terminal-prompt"
+            aria-label="Terminal prompt"
           >
-            Live Demo <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="project-card reveal reveal-right" id="tic-tac-toe">
-          <div class="project-top">
-            <div class="project-icon-wrap">
-              <i class="fa-solid fa-gamepad"></i>
-            </div>
-            <div class="project-links">
-              <a
-                href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/"
-                target="_blank"
-                class="proj-link"
-                aria-label="Live Demo"
-              >
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
+            <span>$</span>
+            <span class="terminal-cursor" aria-hidden="true"></span>
           </div>
-          <h3>Tic Tac Toe</h3>
-          <p>
-            Classic Tic Tac Toe game with a modern twist. Two players compete on
-            a 3×3 grid with automatic win detection and styled game states.
-          </p>
-          <div class="project-img-wrap">
-            <img
-              src="Tic Tac Toe.png"
-              alt="Tic Tac Toe Project"
-              class="project-img"
-            />
-          </div>
-          <div class="project-tags">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span>
-          </div>
-          <a
-            href="https://gauravi-pattiwar.github.io/Tic-Tac-Toe/"
-            target="_blank"
-            class="btn-primary btn-sm"
-          >
-            Live Demo <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="project-card reveal reveal-right" id="excurso">
-          <div class="project-top">
-            <div class="project-icon-wrap">
-              <i class="fa-solid fa-suitcase-rolling"></i>
-            </div>
-            <div class="project-links">
-              <a
-                href=""
-                target="_blank"
-                class="proj-link"
-                aria-label="Live Demo"
-              >
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </div>
-          <h3>Excurso</h3>
-          <p>
-            Travel planning often means jumping between destination guides,
-            budget calculators, and itinerary planners. Excurso brings these
-            essentials together in one place, helping users turn a destination
-            idea into a practical trip plan based on their budget, duration,
-            group size, and travel style. It provides dynamic INR budget
-            estimates and day-wise itineraries with ideal visiting times, making
-            trip planning simpler, faster, and more organized.
-          </p>
-          <div class="project-img-wrap">
-            <img src="Excurso.png" alt="Excurso Project" class="project-img" />
-          </div>
-          <div class="project-tags">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span
-            ><span>Node.js</span><span>Express.js</span>
-          </div>
-          <a href="#" target="_blank" class="btn-primary btn-sm">
-            Live Demo <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
-
-        <div class="project-card reveal reveal-right" id="medivoice">
-          <div class="project-top">
-            <div class="project-icon-wrap">
-              <i class="fa-solid fa-pills"></i>
-            </div>
-            <div class="project-links">
-              <a
-                href=""
-                target="_blank"
-                class="proj-link"
-                aria-label="Live Demo"
-              >
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </div>
-          <h3>MediVoice</h3>
-          <p>
-            MediVoice is a voice-first medication management platform designed
-            to make everyday medication routines simpler and more accessible. It
-            provides personalized voice reminders, medication tracking,
-            adherence insights, and caregiver support, helping users stay on
-            schedule without relying solely on screens or complicated
-            interfaces. Built with a focus on accessibility, simplicity, and
-            real-world usability, MediVoice turns medication management into a
-            more connected and effortless experience.
-          </p>
-          <div class="project-img-wrap">
-            <img
-              src="Medivoice.png"
-              alt="Medivoice Project"
-              class="project-img"
-            />
-          </div>
-          <div class="project-tags">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span
-            ><span>Node.js</span>
-          </div>
-          <a href="#" target="_blank" class="btn-primary btn-sm">
-            Live Demo <i class="fa-solid fa-arrow-right"></i>
-          </a>
         </div>
       </div>
     </section>

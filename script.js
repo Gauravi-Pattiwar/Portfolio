@@ -54,7 +54,7 @@ document.addEventListener("mouseleave", () => {
 
 // Hover state on interactive elements
 const hoverables =
-  "a, button, li, .card, .skill-card, .project-card, .skill_img, .social-chip, .contact-social-card, .edu-card, .ltag, .proj-link, #back-to-top";
+  "a, button, li, .card, .skill-card, .project-item, .skill_img, .social-chip, .contact-social-card, .edu-card, .ltag, .proj-link, #back-to-top";
 document.querySelectorAll(hoverables).forEach((el) => {
   el.addEventListener("mouseenter", () =>
     document.body.classList.add("cursor-hover"),
@@ -282,7 +282,7 @@ function staggerReveal(parentSelector, childSelector, delayStep = 0.1) {
 }
 
 staggerReveal(".skills-grid", ".skill-card", 0.12);
-staggerReveal(".projects-grid", ".project-card", 0.14);
+staggerReveal(".projects-terminal__list", ".project-item", 0.06);
 staggerReveal(".about-right", ".edu-card", 0.1);
 staggerReveal(".stats-strip", ".stat-item", 0.08);
 staggerReveal(".hero-content", ".reveal-hero", 0.12);
@@ -389,26 +389,180 @@ btt?.addEventListener("click", () => {
 });
 
 /* ──────────────────────────────────────────────────────
-   11. 3-D TILT on Project Cards
+   11. TERMINAL PROJECT EXPLORER
    ────────────────────────────────────────────────────── */
-document.querySelectorAll(".project-card").forEach((card) => {
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) / (rect.width / 2);
-    const dy = (e.clientY - cy) / (rect.height / 2);
-    card.style.transform = `rotateX(${-dy * 5}deg) rotateY(${dx * 7}deg) translateY(-8px) scale(1.01)`;
+const projectData = [
+  {
+    name: "Calculator",
+    slug: "calculator",
+    description:
+      "A clean calculator app for everyday arithmetic with a responsive, user-friendly interface.",
+    problem:
+      "Users needed a lightweight arithmetic tool that felt polished, fast, and easy to use on any screen size.",
+    solution:
+      "Built a responsive calculator interface with instant calculations, clear controls, and an intuitive layout that keeps the experience focused and efficient.",
+    features: [
+      "Basic arithmetic operations",
+      "Responsive layout",
+      "Clear and reset controls",
+      "Accessible button interactions",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript"],
+    image: "Calculator.png",
+    liveDemo: "https://gauravi-pattiwar.github.io/Calculator/",
+    github: "",
+  },
+  {
+    name: "Tic Tac Toe",
+    slug: "tic-tac-toe",
+    description:
+      "A classic two-player game with quick rounds, win detection, and a polished layout.",
+    problem:
+      "Players wanted a simple, instantly playable game that still felt visually polished and easy to understand.",
+    solution:
+      "Created a browser-based game with real-time turn logic, win-state detection, and responsive styling that keeps the board readable across devices.",
+    features: [
+      "Two-player gameplay",
+      "Win and draw detection",
+      "Modern game states",
+      "Responsive board layout",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript"],
+    image: "Tic Tac Toe.png",
+    liveDemo: "https://gauravi-pattiwar.github.io/Tic-Tac-Toe/",
+    github: "",
+  },
+  {
+    name: "Excurso",
+    slug: "excurso",
+    description:
+      "A travel planner that helps organize budgets, destination ideas, and trip details in one place.",
+    problem:
+      "Trip planning was fragmented across multiple tools, making it harder to estimate budgets and organize travel details in one place.",
+    solution:
+      "Developed a planning interface that combines destination insights, INR-based budgeting, and day-wise itinerary suggestions to simplify the planning workflow.",
+    features: [
+      "Budget estimation in INR",
+      "Day-wise itinerary planning",
+      "Destination planning flow",
+      "Travel style inputs",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js"],
+    image: "Excurso.png",
+    liveDemo: "",
+    github: "",
+  },
+];
+
+const projectsTerminalList = document.getElementById("projects-terminal-list");
+const projectDetail = document.getElementById("project-detail");
+let selectedProjectSlug = null;
+
+function renderProjectsTerminal() {
+  if (!projectsTerminalList || !projectDetail) return;
+
+  projectsTerminalList.innerHTML = projectData
+    .map(
+      (project, index) => `
+        <button
+          type="button"
+          class="project-item ${selectedProjectSlug === project.slug ? "is-selected" : ""}"
+          data-slug="${project.slug}"
+          aria-label="Open ${project.name}"
+          aria-pressed="${selectedProjectSlug === project.slug}"
+        >
+          <span class="project-item__index">[${String(index + 1).padStart(2, "0")}]</span>
+          <span class="project-item__name">${project.name}</span>
+        </button>
+      `,
+    )
+    .join("");
+
+  projectsTerminalList.querySelectorAll(".project-item").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedProjectSlug = button.dataset.slug;
+      renderProjectsTerminal();
+    });
   });
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
-    card.style.transition = "transform 0.5s ease";
-    setTimeout(() => (card.style.transition = ""), 500);
-  });
-  card.addEventListener("mouseenter", () => {
-    card.style.transition = "box-shadow 0.35s ease, transform 0.1s ease";
-  });
-});
+
+  const selectedProject = projectData.find(
+    (project) => project.slug === selectedProjectSlug,
+  );
+
+  if (!selectedProject) {
+    projectDetail.hidden = true;
+    projectDetail.innerHTML = "";
+    return;
+  }
+
+  const liveDemoButton = selectedProject.liveDemo
+    ? `<a href="${selectedProject.liveDemo}" target="_blank" rel="noreferrer" class="project-action">Live Demo</a>`
+    : "";
+
+  const githubButton = selectedProject.github
+    ? `<a href="${selectedProject.github}" target="_blank" rel="noreferrer" class="project-action project-action--secondary">GitHub</a>`
+    : "";
+
+  projectDetail.hidden = false;
+  projectDetail.innerHTML = `
+    <div class="terminal-line terminal-command">$ open ${selectedProject.slug}</div>
+    <div class="project-detail__layout">
+      <div class="project-detail__media">
+        <img src="${selectedProject.image}" alt="${selectedProject.name} Project" />
+      </div>
+      <div class="project-detail__content">
+        <div class="project-detail__eyebrow">PROJECT</div>
+        <h3>${selectedProject.name}</h3>
+
+        <div class="project-detail__group">
+          <h4>Problem</h4>
+          <p>${selectedProject.problem}</p>
+        </div>
+
+        <div class="project-detail__group">
+          <h4>Solution</h4>
+          <p>${selectedProject.solution}</p>
+        </div>
+
+        <div class="project-detail__group">
+          <h4>Key Features</h4>
+          <ul class="project-detail__features">
+            ${selectedProject.features
+              .map((feature) => `<li>${feature}</li>`)
+              .join("")}
+          </ul>
+        </div>
+
+        <div class="project-detail__group">
+          <h4>Technologies</h4>
+          <div class="project-detail__techs">
+            ${selectedProject.technologies
+              .map((tech) => `<span>${tech}</span>`)
+              .join("")}
+          </div>
+        </div>
+
+        <div class="project-detail__actions">
+          ${liveDemoButton}
+          ${githubButton}
+        </div>
+
+        <button type="button" class="project-back" data-action="back">
+          ← Back to Projects
+        </button>
+      </div>
+    </div>
+  `;
+
+  projectDetail
+    .querySelector(".project-back")
+    ?.addEventListener("click", () => {
+      selectedProjectSlug = null;
+      renderProjectsTerminal();
+    });
+}
+
+renderProjectsTerminal();
 
 /* ──────────────────────────────────────────────────────
    12. SKILL CARD GLOW on Hover
