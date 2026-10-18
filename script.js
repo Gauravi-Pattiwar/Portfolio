@@ -1,6 +1,4 @@
-/* ════════════════════════════════════════════════════════
-   Gauravi Pattiwar · Premium Portfolio JavaScript
-   ════════════════════════════════════════════════════════ */
+
 
 /* ──────────────────────────────────────────────────────
    1.  CUSTOM CURSOR
@@ -410,7 +408,7 @@ const projectData = [
     technologies: ["HTML", "CSS", "JavaScript"],
     image: "Calculator.png",
     liveDemo: "https://gauravi-pattiwar.github.io/Calculator/",
-    github: "",
+    github: "https://github.com/Gauravi-Pattiwar/Calculator.git",
   },
   {
     name: "Tic Tac Toe",
@@ -430,7 +428,7 @@ const projectData = [
     technologies: ["HTML", "CSS", "JavaScript"],
     image: "Tic Tac Toe.png",
     liveDemo: "https://gauravi-pattiwar.github.io/Tic-Tac-Toe/",
-    github: "",
+    github: "https://github.com/Gauravi-Pattiwar/Tic-Tac-Toe.git",
   },
   {
     name: "Excurso",
@@ -450,7 +448,35 @@ const projectData = [
     technologies: ["HTML", "CSS", "JavaScript", "Node.js", "Express.js"],
     image: "Excurso.png",
     liveDemo: "",
-    github: "",
+    github: "https://github.com/Gauravi-Pattiwar/Excurso.git",
+  },
+  {
+    name: "Finora",
+    slug: "finora",
+    description:
+      "A personal finance advisory platform featuring AI-driven summary generation, personalized goal achievement paths, budget tracking, and smart financial recommendations.",
+    problem:
+      "Personal finance tracking is often scattered across spreadsheets and complex banking apps, making it hard to see the big picture of your financial health, budget pacing, and savings goals.",
+    solution:
+      "Built a browser-based advisory platform with visual analytics dashboards, personalized financial health scoring, AI-driven goal roadmaps, and downloadable reports.",
+    features: [
+      "Financial health assessment & scoring",
+      "Budget planning & savings goal tracker",
+      "AI summary & goal achievement path",
+      "AI driven insights and recommendations",
+    ],
+    technologies: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB Atlas",
+      "AI Integration",
+    ],
+    image: "Finora.png",
+    liveDemo: "https://finora-drab-two.vercel.app",
+    github: "https://github.com/Gauravi-Pattiwar/Finora",
   },
 ];
 
@@ -513,6 +539,10 @@ function renderProjectsTerminal() {
       <div class="project-detail__content">
         <div class="project-detail__eyebrow">PROJECT</div>
         <h3>${selectedProject.name}</h3>
+        ${selectedProject.description
+      ? `<p class="project-detail__description">${selectedProject.description}</p>`
+      : ""
+    }
 
         <div class="project-detail__group">
           <h4>Problem</h4>
@@ -528,8 +558,8 @@ function renderProjectsTerminal() {
           <h4>Key Features</h4>
           <ul class="project-detail__features">
             ${selectedProject.features
-              .map((feature) => `<li>${feature}</li>`)
-              .join("")}
+      .map((feature) => `<li>${feature}</li>`)
+      .join("")}
           </ul>
         </div>
 
@@ -537,8 +567,8 @@ function renderProjectsTerminal() {
           <h4>Technologies</h4>
           <div class="project-detail__techs">
             ${selectedProject.technologies
-              .map((tech) => `<span>${tech}</span>`)
-              .join("")}
+      .map((tech) => `<span>${tech}</span>`)
+      .join("")}
           </div>
         </div>
 
@@ -1113,7 +1143,7 @@ dropZones.forEach((zone) => {
     try {
       const parsed = JSON.parse(e.dataTransfer.getData("text/plain"));
       if (parsed && parsed.text) data = parsed;
-    } catch (err) {}
+    } catch (err) { }
 
     if (!data) return;
 
